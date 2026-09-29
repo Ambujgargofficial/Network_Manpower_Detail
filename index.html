@@ -141,7 +141,6 @@
         <div>
           <div class="flex items-center gap-1.5">
             <span class="font-outfit font-extrabold text-base sm:text-lg tracking-tight text-slate-900">MASHA HONDA</span>
-            <span class="text-[9px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded-md bg-red-50 text-red-600 border border-red-200">Official</span>
           </div>
           <p class="text-[10px] sm:text-xs text-slate-500 hidden xs:block">Authorized Dealership Network &bull; Manpower Portal</p>
         </div>
@@ -228,27 +227,33 @@
     <section id="step2Designations" class="w-full hidden transition-all duration-300">
       <div class="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 border border-slate-200 shadow-xl bg-white/95">
         
-        <!-- Header with Back Button and Active Location Pill -->
-        <div class="flex items-center justify-between gap-2 pb-3.5 border-b border-slate-200">
-          <div class="flex items-center gap-2.5">
-            <button onclick="goToStep1()" class="w-8 h-8 rounded-lg bg-slate-100 hover:bg-slate-200 border border-slate-200 flex items-center justify-center text-slate-700 transition-all shadow-sm" title="Change Location">
-              <i class="fa-solid fa-arrow-left text-xs"></i>
-            </button>
-            <div>
-              <h2 class="text-base sm:text-lg font-bold font-outfit text-slate-900 leading-tight">Designations Status</h2>
-              <p class="text-[11px] text-slate-500">Select a role to register details or mark not available</p>
-            </div>
+        <!-- Top Row: Dealership Name & Sync Button aligned to the right -->
+        <div class="flex items-center justify-between gap-2 pb-2.5 mb-2.5 border-b border-slate-100">
+          <div class="flex items-center gap-1.5 text-xs text-slate-500">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span class="text-[11px] font-semibold text-slate-600">Authorized Branch</span>
           </div>
 
-          <div class="flex items-center gap-1.5">
-            <button type="button" onclick="fetchLiveDealerStatus(true)" id="btnRefreshStatus" title="Refresh sheet status" class="px-2 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold flex items-center gap-1 transition-all border border-slate-200 shadow-sm">
-              <i class="fa-solid fa-arrows-rotate text-[11px]" id="refreshStatusIcon"></i>
-              <span class="hidden sm:inline">Sync</span>
-            </button>
-            <div class="flex items-center gap-1.5 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded-lg text-[11px] font-semibold text-slate-700 max-w-[150px] sm:max-w-none truncate">
-              <i class="fa-solid fa-building text-red-600"></i>
-              <span id="activeDealerBadge" class="truncate">--</span>
+          <div class="flex items-center gap-2 justify-end">
+            <div class="flex items-center gap-1.5 bg-red-50 border border-red-200/90 px-2.5 py-1 rounded-lg text-xs font-bold text-slate-800 shadow-sm text-right">
+              <i class="fa-solid fa-building text-red-600 text-xs flex-shrink-0"></i>
+              <span id="activeDealerBadge" class="leading-none whitespace-normal sm:whitespace-nowrap">--</span>
             </div>
+            <button type="button" onclick="fetchLiveDealerStatus(true)" id="btnRefreshStatus" title="Refresh sheet status" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold flex items-center gap-1 transition-all border border-slate-200 shadow-sm flex-shrink-0">
+              <i class="fa-solid fa-arrows-rotate text-[11px]" id="refreshStatusIcon"></i>
+              <span class="text-[11px] font-bold">Sync</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Clean Straight Row: Back Button + Straight Title and Subtitle -->
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-200">
+          <button onclick="goToStep1()" class="w-8 h-8 rounded-lg bg-slate-100 hover:bg-slate-200 border border-slate-200 flex items-center justify-center text-slate-700 transition-all shadow-sm flex-shrink-0" title="Change Location">
+            <i class="fa-solid fa-arrow-left text-xs"></i>
+          </button>
+          <div class="min-w-0 flex-1">
+            <h2 class="text-base sm:text-lg font-bold font-outfit text-slate-900 leading-tight whitespace-nowrap">Designations Status</h2>
+            <p class="text-[11.5px] text-slate-500 truncate sm:whitespace-normal">Select a role to register details or mark not available</p>
           </div>
         </div>
 
@@ -1070,6 +1075,15 @@
           if (val && index < boxes.length - 1) {
             boxes[index + 1].focus();
           }
+
+          // ROCKET SPEED: Auto-submit instantly when 6th digit is typed!
+          if (index === boxes.length - 1 && val) {
+            let fullOtp = '';
+            boxes.forEach(b => fullOtp += b.value.trim());
+            if (fullOtp.length === 6) {
+              handleVerifyOtpSubmit();
+            }
+          }
         };
 
         box.onkeydown = (e) => {
@@ -1087,6 +1101,7 @@
           if (pasteData.length >= 6) {
             boxes.forEach((b, i) => b.value = pasteData[i] || '');
             boxes[5].focus();
+            handleVerifyOtpSubmit();
           }
         };
       });
@@ -1173,9 +1188,20 @@
 
         if (data && data.status === "success") {
           appState.verifiedBranchCode = appState.selectedDealerCode;
+
+          // INSTANT POPULATE: Backend returned the statuses in the SAME call!
+          if (data.designations) {
+            for (const roleKey in data.designations) {
+              if (data.designations.hasOwnProperty(roleKey)) {
+                appState.statuses[roleKey] = data.designations[roleKey].status || "Pending";
+                appState.timestamps[roleKey] = data.designations[roleKey].timestamp || "NA";
+              }
+            }
+          }
+
           closeOtpModal();
           showToast("Verified!", "Dealership verified successfully.", "success");
-          openStep2Screen();
+          openStep2Screen(true); // Open instantly with preloaded data!
         } else {
           errorMsg.querySelector('span').textContent = data.message || "Invalid or expired OTP.";
           errorMsg.classList.remove('hidden');
@@ -1191,6 +1217,19 @@
         btnText.textContent = "Verify OTP & Proceed";
         btnIcon.classList.remove('hidden');
         spinner.classList.add('hidden');
+      }
+    }
+
+    function openStep2Screen(alreadyPreloaded = false) {
+      document.getElementById('activeDealerBadge').textContent = `${appState.selectedDealerName} [${appState.selectedDealerCode}]`;
+      updateStep2BadgesAndTimes();
+      document.getElementById('step1Location').classList.add('hidden');
+      document.getElementById('step2Designations').classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // Only perform background sync if not already bundled in OTP response
+      if (!alreadyPreloaded) {
+        fetchLiveDealerStatus(false);
       }
     }
 
@@ -1271,8 +1310,9 @@
         const timeElem = document.getElementById(`time-${idSuffix}`);
 
         if (timeElem) {
-          timeElem.textContent = appState.timestamps[role] || "NA";
-          if (appState.timestamps[role] !== "NA") {
+          const rawTime = appState.timestamps[role] || "NA";
+          timeElem.textContent = formatCleanTimestamp(rawTime);
+          if (rawTime !== "NA") {
             timeElem.className = "text-emerald-700 font-semibold";
           } else {
             timeElem.className = "text-slate-700 font-mono";
@@ -1293,6 +1333,24 @@
           }
         }
       });
+    }
+
+    function formatCleanTimestamp(val) {
+      if (!val || val === "NA") return "NA";
+      try {
+        const parsed = new Date(val);
+        if (!isNaN(parsed.getTime())) {
+          return parsed.toLocaleString('en-IN', {
+            day: '2-digit',
+            month: 'short',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true
+          });
+        }
+      } catch (e) {}
+      return val.length > 25 ? val.substring(0, 24) + '...' : val;
     }
 
     function quickMarkNotAvailable(designation) {
