@@ -1015,21 +1015,32 @@
     }
 
     function openOtpModal(maskedEmail) {
-      document.getElementById('otpModalDealerName').textContent = `${appState.selectedDealerName} [${appState.selectedDealerCode}]`;
-      document.getElementById('otpMaskedEmail').textContent = maskedEmail ? `Sent to: ${maskedEmail}` : "";
-      document.getElementById('otpModalErrorMsg').classList.add('hidden');
+      const modal = document.getElementById('otpModal');
+      if (!modal) return;
+
+      const nameElem = document.getElementById('otpModalDealerName');
+      if (nameElem) nameElem.textContent = `${appState.selectedDealerName} [${appState.selectedDealerCode}]`;
+
+      const emailElem = document.getElementById('otpMaskedEmail');
+      if (emailElem) emailElem.textContent = maskedEmail ? `Sent to: ${maskedEmail}` : "Sent to registered email";
+
+      const errElem = document.getElementById('otpModalErrorMsg');
+      if (errElem) errElem.classList.add('hidden');
       
       const boxes = document.querySelectorAll('.otp-box');
       boxes.forEach(box => box.value = '');
       
-      document.getElementById('otpModal').classList.remove('hidden');
-      if (boxes[0]) boxes[0].focus();
+      modal.classList.remove('hidden');
+      if (boxes[0]) {
+        setTimeout(() => boxes[0].focus(), 150);
+      }
 
       setupOtpInputHandlers();
     }
 
     function closeOtpModal() {
-      document.getElementById('otpModal').classList.add('hidden');
+      const modal = document.getElementById('otpModal');
+      if (modal) modal.classList.add('hidden');
       if (appState.otpCountdownInterval) clearInterval(appState.otpCountdownInterval);
     }
 
