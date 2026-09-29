@@ -14,7 +14,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
   
   <!-- Canvas Confetti for Celebration effect -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
@@ -22,16 +22,15 @@
   <style>
     :root {
       --primary-honda: #E40521;
-      --primary-dark: #B30016;
-      --glass-bg: rgba(18, 22, 34, 0.82);
-      --glass-border: rgba(255, 255, 255, 0.12);
-      --glass-hover: rgba(255, 255, 255, 0.18);
+      --primary-dark: #C40019;
+      --surface-card: rgba(255, 255, 255, 0.94);
+      --surface-border: #E2E8F0;
     }
 
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background: radial-gradient(circle at 15% 15%, #1e2538 0%, #0d111a 50%, #07090e 100%);
-      color: #f1f5f9;
+      background: radial-gradient(circle at 10% 5%, #ffffff 0%, #f1f5f9 45%, #e2e8f0 100%);
+      color: #0f172a;
       min-height: 100vh;
       overflow-x: hidden;
     }
@@ -40,84 +39,72 @@
       font-family: 'Outfit', sans-serif;
     }
 
-    /* Ambient animated lighting circles */
+    /* Ambient corporate decorative glow */
     .ambient-glow-1 {
       position: fixed;
       top: -10%;
       left: -10%;
       width: 45vw;
       height: 45vw;
-      background: radial-gradient(circle, rgba(228, 5, 33, 0.22) 0%, rgba(228, 5, 33, 0) 70%);
+      background: radial-gradient(circle, rgba(228, 5, 33, 0.08) 0%, rgba(228, 5, 33, 0) 70%);
       border-radius: 50%;
       filter: blur(80px);
       z-index: 0;
       pointer-events: none;
-      animation: floatGlow 12s ease-in-out infinite alternate;
     }
 
     .ambient-glow-2 {
       position: fixed;
       bottom: -15%;
       right: -10%;
-      width: 50vw;
-      height: 50vw;
-      background: radial-gradient(circle, rgba(59, 130, 246, 0.16) 0%, rgba(59, 130, 246, 0) 70%);
+      width: 45vw;
+      height: 45vw;
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.08) 0%, rgba(14, 165, 233, 0) 70%);
       border-radius: 50%;
-      filter: blur(100px);
+      filter: blur(80px);
       z-index: 0;
       pointer-events: none;
-      animation: floatGlowReverse 16s ease-in-out infinite alternate;
     }
 
-    @keyframes floatGlow {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(60px, 40px) scale(1.15); }
-    }
-
-    @keyframes floatGlowReverse {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(-50px, -30px) scale(1.1); }
-    }
-
-    /* Glass Panels */
+    /* Premium Light Theme Cards */
     .glass-card {
-      background: var(--glass-bg);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--glass-border);
-      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 20px 0 rgba(228, 5, 33, 0.05);
+      background: var(--surface-card);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid var(--surface-border);
+      box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.06), 0 4px 12px -2px rgba(15, 23, 42, 0.03);
     }
 
     .glass-input {
-      background: rgba(15, 23, 42, 0.65);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      background: #ffffff;
+      border: 1.5px solid #cbd5e1;
+      color: #0f172a;
+      transition: all 0.25s ease;
     }
 
     .glass-input:focus {
-      background: rgba(15, 23, 42, 0.9);
+      background: #ffffff;
       border-color: #E40521;
-      box-shadow: 0 0 0 3px rgba(228, 5, 33, 0.25);
+      box-shadow: 0 0 0 3px rgba(228, 5, 33, 0.15);
     }
 
-    /* Custom Scrollbar */
+    /* Custom Light Scrollbar */
     ::-webkit-scrollbar {
       width: 6px;
       height: 6px;
     }
     ::-webkit-scrollbar-track {
-      background: rgba(15, 23, 42, 0.6);
+      background: #f1f5f9;
     }
     ::-webkit-scrollbar-thumb {
-      background: rgba(228, 5, 33, 0.5);
-      border-radius: 3px;
+      background: #cbd5e1;
+      border-radius: 4px;
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: rgba(228, 5, 33, 0.8);
+      background: #94a3b8;
     }
 
-    /* Shimmer Effect */
+    /* Shimmer Button */
     .shimmer-btn {
       position: relative;
       overflow: hidden;
@@ -129,7 +116,7 @@
       left: -50%;
       width: 200%;
       height: 200%;
-      background: linear-gradient(60deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+      background: linear-gradient(60deg, transparent, rgba(255, 255, 255, 0.3), transparent);
       transform: rotate(30deg);
       animation: shimmerMove 3.5s infinite;
     }
@@ -141,552 +128,530 @@
 </head>
 
 <body class="relative flex flex-col justify-between min-h-screen selection:bg-red-600 selection:text-white">
-  <!-- Glowing Background Orbs -->
+  <!-- Subtle Ambient Glows -->
   <div class="ambient-glow-1"></div>
   <div class="ambient-glow-2"></div>
 
-  <!-- Top Navigation & Header -->
-  <header class="relative z-20 border-b border-white/10 glass-card px-4 sm:px-8 py-3.5 sticky top-0 backdrop-blur-xl">
-    <div class="max-w-7xl mx-auto flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-red-600 to-red-500 flex items-center justify-center shadow-lg shadow-red-600/30 text-white font-bold text-xl tracking-wider">
+  <!-- Header Navigation -->
+  <header class="relative z-20 border-b border-slate-200/90 bg-white/90 px-3 sm:px-6 py-2.5 sm:py-3 sticky top-0 backdrop-blur-md shadow-sm">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-red-600 to-red-500 flex items-center justify-center shadow-md shadow-red-600/25 text-white font-bold text-lg sm:text-xl">
           <i class="fa-solid fa-motorcycle"></i>
         </div>
         <div>
-          <div class="flex items-center gap-2">
-            <span class="font-outfit font-extrabold text-lg sm:text-xl tracking-tight text-white">MASHA HONDA</span>
-            <span class="text-[10px] uppercase font-bold tracking-widest px-2 py-0.5 rounded-full bg-red-500/20 text-red-400 border border-red-500/30">Official Portal</span>
+          <div class="flex items-center gap-1.5">
+            <span class="font-outfit font-extrabold text-base sm:text-lg tracking-tight text-slate-900">MASHA HONDA</span>
+            <span class="text-[9px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded-md bg-red-50 text-red-600 border border-red-200">Official</span>
           </div>
-          <p class="text-xs text-slate-400 hidden sm:block">Authorized Dealership Network &bull; AD Manpower Verification</p>
+          <p class="text-[10px] sm:text-xs text-slate-500 hidden xs:block">Authorized Dealership Network &bull; Manpower Portal</p>
         </div>
       </div>
 
-      <!-- Online Portal Indicator -->
-      <div class="flex items-center gap-2.5">
-        <span class="text-xs flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 font-medium shadow-inner">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      <div class="flex items-center gap-2">
+        <span class="text-[11px] sm:text-xs flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
           <span>Online Portal</span>
         </span>
       </div>
     </div>
   </header>
 
-  <main class="relative z-10 flex-grow max-w-5xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-10 flex flex-col justify-center">
+  <!-- Main Container Optimized for Minimal Vertical Mobile Scrolling -->
+  <main class="relative z-10 flex-grow max-w-4xl w-full mx-auto px-3 sm:px-6 py-4 sm:py-6 flex flex-col justify-center">
 
     <!-- STEP 1: Dealership Location Selection Screen -->
-    <section id="step1Location" class="w-full transition-all duration-500 transform">
-      <div class="glass-card rounded-2xl sm:rounded-3xl p-6 sm:p-10 border border-white/10 max-w-2xl mx-auto shadow-2xl relative overflow-hidden">
+    <section id="step1Location" class="w-full transition-all duration-300">
+      <div class="glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 max-w-xl mx-auto shadow-xl relative overflow-hidden bg-white/95">
         
-        <!-- Top decorative ribbon -->
-        <div class="absolute -top-12 -right-12 w-32 h-32 bg-red-600/20 rounded-full blur-2xl"></div>
-
-        <div class="text-center mb-8">
-          <div class="inline-flex p-3 rounded-2xl bg-red-600/15 border border-red-500/30 text-red-500 mb-4 shadow-inner">
-            <i class="fa-solid fa-location-dot text-2xl"></i>
+        <div class="text-center mb-5 sm:mb-6">
+          <div class="inline-flex p-3 rounded-2xl bg-red-50 border border-red-200 text-red-600 mb-3 shadow-sm">
+            <i class="fa-solid fa-location-dot text-xl sm:text-2xl"></i>
           </div>
-          <h1 class="text-2xl sm:text-3xl font-extrabold font-outfit text-white tracking-tight">AD Manpower Registration</h1>
-          <p class="text-sm text-slate-300 mt-2">Select your authorized dealership location &amp; branch code to proceed</p>
+          <h1 class="text-xl sm:text-2xl font-extrabold font-outfit text-slate-900 tracking-tight">AD Manpower Registration</h1>
+          <p class="text-xs sm:text-sm text-slate-600 mt-1">Select your authorized dealership location &amp; branch code to begin</p>
         </div>
 
-        <!-- Form Component -->
-        <div class="space-y-6">
+        <div class="space-y-4">
           <div>
-            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2.5">
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
               Select Dealership Location <span class="text-red-500">*</span>
             </label>
             <div class="relative">
-              <select id="dealerLocationSelect" class="glass-input w-full rounded-xl px-4 py-3.5 text-white font-medium appearance-none cursor-pointer focus:outline-none pr-10 text-sm sm:text-base">
-                <option value="" disabled selected class="bg-slate-900 text-slate-400">-- Choose Authorized Dealership --</option>
-                <option value="Al-Uzair Honda Gulaothi [UP06SC02]" data-name="Al-Uzair Honda Gulaothi" data-code="UP06SC02" class="bg-slate-900 text-white">Al-Uzair Honda Gulaothi [UP06SC02]</option>
-                <option value="Agarwal Honda [UP06SD02]" data-name="Agarwal Honda" data-code="UP06SD02" class="bg-slate-900 text-white">Agarwal Honda [UP06SD02]</option>
-                <option value="Veer Honda [UP06SF02]" data-name="Veer Honda" data-code="UP06SF02" class="bg-slate-900 text-white">Veer Honda [UP06SF02]</option>
-                <option value="Shri Ganga Honda [UP06SI02]" data-name="Shri Ganga Honda" data-code="UP06SI02" class="bg-slate-900 text-white">Shri Ganga Honda [UP06SI02]</option>
-                <option value="Shri Bhagirathi Honda [UP06SG02]" data-name="Shri Bhagirathi Honda" data-code="UP06SG02" class="bg-slate-900 text-white">Shri Bhagirathi Honda [UP06SG02]</option>
+              <select id="dealerLocationSelect" class="glass-input w-full rounded-xl px-3.5 py-3 text-slate-900 font-semibold appearance-none cursor-pointer focus:outline-none pr-10 text-xs sm:text-sm shadow-sm">
+                <option value="" disabled selected class="text-slate-400">-- Choose Authorized Dealership --</option>
+                <option value="Al-Uzair Honda Gulaothi [UP06SC02]" data-name="Al-Uzair Honda Gulaothi" data-code="UP06SC02">Al-Uzair Honda Gulaothi [UP06SC02]</option>
+                <option value="Agarwal Honda [UP06SD02]" data-name="Agarwal Honda" data-code="UP06SD02">Agarwal Honda [UP06SD02]</option>
+                <option value="Veer Honda [UP06SF02]" data-name="Veer Honda" data-code="UP06SF02">Veer Honda [UP06SF02]</option>
+                <option value="Shri Ganga Honda [UP06SI02]" data-name="Shri Ganga Honda" data-code="UP06SI02">Shri Ganga Honda [UP06SI02]</option>
+                <option value="Shri Bhagirathi Honda [UP06SG02]" data-name="Shri Bhagirathi Honda" data-code="UP06SG02">Shri Bhagirathi Honda [UP06SG02]</option>
               </select>
-              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-400">
-                <i class="fa-solid fa-chevron-down text-sm"></i>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-slate-500">
+                <i class="fa-solid fa-chevron-down text-xs"></i>
               </div>
             </div>
-            <p id="locationErrorMsg" class="text-xs text-red-400 mt-2 hidden items-center gap-1">
-              <i class="fa-solid fa-circle-exclamation"></i> Please select a valid dealership branch to proceed.
+            <p id="locationErrorMsg" class="text-xs text-red-600 font-medium mt-1.5 hidden items-center gap-1">
+              <i class="fa-solid fa-circle-exclamation"></i> Please select a valid dealership branch.
             </p>
           </div>
 
           <!-- Dealership Preview Box -->
-          <div id="dealerPreviewCard" class="hidden rounded-xl p-4 bg-slate-900/50 border border-slate-700/60 transition-all">
+          <div id="dealerPreviewCard" class="hidden rounded-xl p-3.5 bg-slate-50 border border-slate-200 shadow-sm transition-all">
             <div class="flex items-center justify-between">
               <div>
-                <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">Selected Dealer</span>
-                <span id="previewDealerName" class="text-sm sm:text-base font-bold text-white block"></span>
+                <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Selected Dealer</span>
+                <span id="previewDealerName" class="text-xs sm:text-sm font-bold text-slate-900 block"></span>
               </div>
               <div class="text-right">
-                <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">Branch Code</span>
-                <span id="previewDealerCode" class="inline-block px-2.5 py-1 text-xs font-mono font-bold rounded-lg bg-red-600/20 text-red-400 border border-red-500/30"></span>
+                <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Branch Code</span>
+                <span id="previewDealerCode" class="inline-block px-2 py-0.5 text-xs font-mono font-bold rounded-md bg-red-100 text-red-700 border border-red-200"></span>
               </div>
             </div>
           </div>
 
           <!-- Proceed Button -->
-          <button id="btnProceedToDesignations" onclick="handleProceedToDesignations()" class="shimmer-btn w-full py-4 rounded-xl bg-gradient-to-r from-red-600 via-red-500 to-red-600 hover:from-red-500 hover:to-red-700 text-white font-bold text-base tracking-wide shadow-lg shadow-red-600/40 hover:shadow-red-600/60 transition-all duration-300 flex items-center justify-center gap-2 group active:scale-[0.99]">
+          <button id="btnProceedToDesignations" onclick="handleProceedToDesignations()" class="shimmer-btn w-full py-3.5 rounded-xl bg-gradient-to-r from-red-600 via-red-500 to-red-600 hover:from-red-700 hover:to-red-600 text-white font-bold text-sm tracking-wide shadow-lg shadow-red-600/30 hover:shadow-red-600/40 transition-all flex items-center justify-center gap-2 group active:scale-[0.99]">
             <span id="btnProceedText">Proceed to Manpower Roles</span>
-            <i id="btnProceedIcon" class="fa-solid fa-arrow-right group-hover:translate-x-1.5 transition-transform duration-300"></i>
-            <svg id="proceedSpinner" class="hidden animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <i id="btnProceedIcon" class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+            <svg id="proceedSpinner" class="hidden animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
               <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
               <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
             </svg>
           </button>
         </div>
 
-        <!-- Footnote security badge -->
-        <div class="mt-8 pt-4 border-t border-white/5 flex items-center justify-between text-xs text-slate-400">
-          <span><i class="fa-solid fa-shield-halved text-emerald-400 mr-1.5"></i> Encrypted Direct Transmission</span>
-          <span class="text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-bolt text-amber-400"></i> Instant 2FA Email OTP</span>
+        <div class="mt-5 pt-3 border-t border-slate-200 flex items-center justify-between text-[11px] text-slate-500">
+          <span><i class="fa-solid fa-shield-halved text-emerald-600 mr-1"></i> Direct Sheet Sync</span>
+          <span><i class="fa-solid fa-envelope-circle-check text-blue-600 mr-1"></i> 2FA Email OTP Verification</span>
         </div>
       </div>
     </section>
 
     <!-- STEP 2: Designation Selection Grid -->
-    <section id="step2Designations" class="w-full hidden transition-all duration-500 transform">
-      <div class="glass-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-white/10 max-w-4xl mx-auto shadow-2xl">
+    <section id="step2Designations" class="w-full hidden transition-all duration-300">
+      <div class="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 border border-slate-200 shadow-xl bg-white/95">
         
         <!-- Header with Back Button and Active Location Pill -->
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
-          <div class="flex items-center gap-3">
-            <button onclick="goToStep1()" class="w-9 h-9 rounded-xl bg-slate-800/80 hover:bg-slate-700 border border-slate-700 flex items-center justify-center text-slate-300 hover:text-white transition-all shadow-sm" title="Change Location">
-              <i class="fa-solid fa-arrow-left text-sm"></i>
+        <div class="flex items-center justify-between gap-2 pb-3.5 border-b border-slate-200">
+          <div class="flex items-center gap-2.5">
+            <button onclick="goToStep1()" class="w-8 h-8 rounded-lg bg-slate-100 hover:bg-slate-200 border border-slate-200 flex items-center justify-center text-slate-700 transition-all shadow-sm" title="Change Location">
+              <i class="fa-solid fa-arrow-left text-xs"></i>
             </button>
             <div>
-              <h2 class="text-xl sm:text-2xl font-bold font-outfit text-white">Select Designation</h2>
-              <p class="text-xs text-slate-400">Choose the role you are updating or filling manpower data for</p>
+              <h2 class="text-base sm:text-lg font-bold font-outfit text-slate-900 leading-tight">Designations Status</h2>
+              <p class="text-[11px] text-slate-500">Select a role to register details or mark not available</p>
             </div>
           </div>
 
-          <div class="flex items-center gap-2 bg-slate-900/70 border border-slate-700/80 px-3.5 py-2 rounded-xl text-xs">
-            <i class="fa-solid fa-building text-red-400"></i>
-            <span id="activeDealerBadge" class="font-semibold text-slate-200 truncate max-w-[200px] sm:max-w-none">--</span>
+          <div class="flex items-center gap-1.5 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded-lg text-[11px] font-semibold text-slate-700 max-w-[170px] sm:max-w-none truncate">
+            <i class="fa-solid fa-building text-red-600"></i>
+            <span id="activeDealerBadge" class="truncate">--</span>
           </div>
         </div>
 
-        <!-- 5 Designations Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-6">
+        <!-- Compact 5 Designations Grid (Minimized Vertical Scrolling) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-3.5 my-3.5">
           
-          <!-- 1. Sales Manager (Special: with Bank and Cheque requirement) -->
-          <div class="group relative rounded-2xl p-5 bg-gradient-to-b from-slate-900/90 to-slate-900/60 border border-red-500/40 hover:border-red-500 hover:shadow-lg hover:shadow-red-500/20 transition-all duration-300">
-            <div class="absolute top-3 right-3 flex items-center gap-1.5">
-              <span id="badge-status-Sales-Manager" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-800 text-slate-300 border border-slate-700">
+          <!-- 1. Sales Manager (Special: Bank req) -->
+          <div class="rounded-xl p-3 sm:p-3.5 bg-slate-50 hover:bg-white border border-red-200 hover:border-red-400 hover:shadow-md transition-all">
+            <div class="flex items-start justify-between gap-1.5">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-red-100 text-red-600 flex items-center justify-center text-sm font-bold">
+                  <i class="fa-solid fa-user-tie"></i>
+                </div>
+                <div>
+                  <h3 class="font-outfit font-bold text-sm text-slate-900">Sales Manager</h3>
+                  <span class="text-[10px] text-red-600 font-semibold block leading-none mt-0.5">Bank &amp; Cheque Req.</span>
+                </div>
+              </div>
+              <span id="badge-status-Sales-Manager" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-200 text-slate-700">
                 Pending
               </span>
-              <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30 flex items-center gap-1">
-                <i class="fa-solid fa-receipt text-[9px]"></i> Bank Req.
-              </span>
             </div>
-            <div class="w-12 h-12 rounded-xl bg-red-600/20 text-red-500 border border-red-500/30 flex items-center justify-center text-xl mb-4">
-              <i class="fa-solid fa-user-tie"></i>
-            </div>
-            <h3 class="font-outfit font-bold text-lg text-white group-hover:text-red-400 transition-colors">Sales Manager</h3>
-            <p class="text-xs text-slate-400 mt-1">Full profile with Bank &amp; Cheque Verification</p>
             
-            <div class="mt-4 pt-3 border-t border-white/5 flex items-center justify-between gap-2">
-              <button type="button" onclick="quickMarkNotAvailable('Sales Manager')" class="px-2.5 py-1.5 rounded-lg bg-slate-800/90 hover:bg-amber-500/20 hover:text-amber-300 hover:border-amber-500/40 border border-slate-700 text-slate-300 text-[11px] font-semibold transition-all flex items-center gap-1">
-                <i class="fa-solid fa-ban text-[10px] text-amber-400"></i> Not Available
+            <div class="mt-2.5 pt-2 border-t border-slate-200/80 flex items-center justify-between gap-1.5">
+              <button type="button" onclick="quickMarkNotAvailable('Sales Manager')" class="px-2 py-1 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-300 text-[10.5px] font-bold transition-all flex items-center gap-1">
+                <i class="fa-solid fa-ban text-amber-600"></i> Not Available
               </button>
-              <button type="button" onclick="selectDesignation('Sales Manager')" class="px-3 py-1.5 rounded-lg bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/40 text-[11px] font-bold transition-all flex items-center gap-1">
-                Fill Form <i class="fa-solid fa-angle-right text-xs"></i>
+              <button type="button" onclick="selectDesignation('Sales Manager')" class="px-2.5 py-1 rounded-lg bg-red-600 hover:bg-red-700 text-white text-[11px] font-bold shadow-sm transition-all flex items-center gap-1">
+                Fill Form <i class="fa-solid fa-chevron-right text-[9px]"></i>
               </button>
             </div>
-            <!-- Last updated timestamp -->
-            <div class="mt-2.5 text-[10px] text-slate-400 flex items-center justify-between bg-black/40 px-2.5 py-1 rounded-md border border-white/5">
+            <div class="mt-1.5 text-[9.5px] text-slate-500 flex items-center justify-between bg-white px-2 py-0.5 rounded border border-slate-200">
               <span>Updated:</span>
-              <strong class="text-slate-300" id="time-Sales-Manager">NA</strong>
+              <strong class="text-slate-700 font-mono" id="time-Sales-Manager">NA</strong>
             </div>
           </div>
 
           <!-- 2. Hirise Operator -->
-          <div class="group relative rounded-2xl p-5 bg-gradient-to-b from-slate-900/80 to-slate-900/50 border border-white/10 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300">
-            <div class="absolute top-3 right-3">
-              <span id="badge-status-Hirise-Operator" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-800 text-slate-300 border border-slate-700">
+          <div class="rounded-xl p-3 sm:p-3.5 bg-slate-50 hover:bg-white border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all">
+            <div class="flex items-start justify-between gap-1.5">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center text-sm font-bold">
+                  <i class="fa-solid fa-desktop"></i>
+                </div>
+                <div>
+                  <h3 class="font-outfit font-bold text-sm text-slate-900">Hirise Operator</h3>
+                  <span class="text-[10px] text-slate-500 block leading-none mt-0.5">DMS &amp; Portal Operations</span>
+                </div>
+              </div>
+              <span id="badge-status-Hirise-Operator" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-200 text-slate-700">
                 Pending
               </span>
             </div>
-            <div class="w-12 h-12 rounded-xl bg-blue-600/20 text-blue-400 border border-blue-500/30 flex items-center justify-center text-xl mb-4">
-              <i class="fa-solid fa-desktop"></i>
-            </div>
-            <h3 class="font-outfit font-bold text-lg text-white group-hover:text-blue-400 transition-colors">Hirise Operator</h3>
-            <p class="text-xs text-slate-400 mt-1">DMS &amp; Portal software operations manager</p>
             
-            <div class="mt-4 pt-3 border-t border-white/5 flex items-center justify-between gap-2">
-              <button type="button" onclick="quickMarkNotAvailable('Hirise Operator')" class="px-2.5 py-1.5 rounded-lg bg-slate-800/90 hover:bg-amber-500/20 hover:text-amber-300 hover:border-amber-500/40 border border-slate-700 text-slate-300 text-[11px] font-semibold transition-all flex items-center gap-1">
-                <i class="fa-solid fa-ban text-[10px] text-amber-400"></i> Not Available
+            <div class="mt-2.5 pt-2 border-t border-slate-200/80 flex items-center justify-between gap-1.5">
+              <button type="button" onclick="quickMarkNotAvailable('Hirise Operator')" class="px-2 py-1 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-300 text-[10.5px] font-bold transition-all flex items-center gap-1">
+                <i class="fa-solid fa-ban text-amber-600"></i> Not Available
               </button>
-              <button type="button" onclick="selectDesignation('Hirise Operator')" class="px-3 py-1.5 rounded-lg bg-blue-600/20 hover:bg-blue-600 text-blue-400 hover:text-white border border-blue-500/40 text-[11px] font-bold transition-all flex items-center gap-1">
-                Fill Form <i class="fa-solid fa-angle-right text-xs"></i>
+              <button type="button" onclick="selectDesignation('Hirise Operator')" class="px-2.5 py-1 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-[11px] font-bold shadow-sm transition-all flex items-center gap-1">
+                Fill Form <i class="fa-solid fa-chevron-right text-[9px]"></i>
               </button>
             </div>
-            <!-- Last updated timestamp -->
-            <div class="mt-2.5 text-[10px] text-slate-400 flex items-center justify-between bg-black/40 px-2.5 py-1 rounded-md border border-white/5">
+            <div class="mt-1.5 text-[9.5px] text-slate-500 flex items-center justify-between bg-white px-2 py-0.5 rounded border border-slate-200">
               <span>Updated:</span>
-              <strong class="text-slate-300" id="time-Hirise-Operator">NA</strong>
+              <strong class="text-slate-700 font-mono" id="time-Hirise-Operator">NA</strong>
             </div>
           </div>
 
           <!-- 3. CRE / Reception -->
-          <div class="group relative rounded-2xl p-5 bg-gradient-to-b from-slate-900/80 to-slate-900/50 border border-white/10 hover:border-emerald-500 hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-300">
-            <div class="absolute top-3 right-3">
-              <span id="badge-status-CRE-Reception" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-800 text-slate-300 border border-slate-700">
+          <div class="rounded-xl p-3 sm:p-3.5 bg-slate-50 hover:bg-white border border-slate-200 hover:border-emerald-400 hover:shadow-md transition-all">
+            <div class="flex items-start justify-between gap-1.5">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center text-sm font-bold">
+                  <i class="fa-solid fa-headset"></i>
+                </div>
+                <div>
+                  <h3 class="font-outfit font-bold text-sm text-slate-900">CRE / Reception</h3>
+                  <span class="text-[10px] text-slate-500 block leading-none mt-0.5">Customer Relationship Desk</span>
+                </div>
+              </div>
+              <span id="badge-status-CRE-Reception" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-200 text-slate-700">
                 Pending
               </span>
             </div>
-            <div class="w-12 h-12 rounded-xl bg-emerald-600/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center text-xl mb-4">
-              <i class="fa-solid fa-headset"></i>
-            </div>
-            <h3 class="font-outfit font-bold text-lg text-white group-hover:text-emerald-400 transition-colors">CRE / Reception</h3>
-            <p class="text-xs text-slate-400 mt-1">Customer relationship &amp; showroom frontdesk</p>
             
-            <div class="mt-4 pt-3 border-t border-white/5 flex items-center justify-between gap-2">
-              <button type="button" onclick="quickMarkNotAvailable('CRE / Reception')" class="px-2.5 py-1.5 rounded-lg bg-slate-800/90 hover:bg-amber-500/20 hover:text-amber-300 hover:border-amber-500/40 border border-slate-700 text-slate-300 text-[11px] font-semibold transition-all flex items-center gap-1">
-                <i class="fa-solid fa-ban text-[10px] text-amber-400"></i> Not Available
+            <div class="mt-2.5 pt-2 border-t border-slate-200/80 flex items-center justify-between gap-1.5">
+              <button type="button" onclick="quickMarkNotAvailable('CRE / Reception')" class="px-2 py-1 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-300 text-[10.5px] font-bold transition-all flex items-center gap-1">
+                <i class="fa-solid fa-ban text-amber-600"></i> Not Available
               </button>
-              <button type="button" onclick="selectDesignation('CRE / Reception')" class="px-3 py-1.5 rounded-lg bg-emerald-600/20 hover:bg-emerald-600 text-emerald-400 hover:text-white border border-emerald-500/40 text-[11px] font-bold transition-all flex items-center gap-1">
-                Fill Form <i class="fa-solid fa-angle-right text-xs"></i>
+              <button type="button" onclick="selectDesignation('CRE / Reception')" class="px-2.5 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-[11px] font-bold shadow-sm transition-all flex items-center gap-1">
+                Fill Form <i class="fa-solid fa-chevron-right text-[9px]"></i>
               </button>
             </div>
-            <!-- Last updated timestamp -->
-            <div class="mt-2.5 text-[10px] text-slate-400 flex items-center justify-between bg-black/40 px-2.5 py-1 rounded-md border border-white/5">
+            <div class="mt-1.5 text-[9.5px] text-slate-500 flex items-center justify-between bg-white px-2 py-0.5 rounded border border-slate-200">
               <span>Updated:</span>
-              <strong class="text-slate-300" id="time-CRE-Reception">NA</strong>
+              <strong class="text-slate-700 font-mono" id="time-CRE-Reception">NA</strong>
             </div>
           </div>
 
           <!-- 4. Salesman 1 -->
-          <div class="group relative rounded-2xl p-5 bg-gradient-to-b from-slate-900/80 to-slate-900/50 border border-white/10 hover:border-purple-500 hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-300">
-            <div class="absolute top-3 right-3">
-              <span id="badge-status-Salesman-1" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-800 text-slate-300 border border-slate-700">
+          <div class="rounded-xl p-3 sm:p-3.5 bg-slate-50 hover:bg-white border border-slate-200 hover:border-purple-400 hover:shadow-md transition-all">
+            <div class="flex items-start justify-between gap-1.5">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center text-sm font-bold">
+                  <i class="fa-solid fa-person-circle-check"></i>
+                </div>
+                <div>
+                  <h3 class="font-outfit font-bold text-sm text-slate-900">Salesman 1</h3>
+                  <span class="text-[10px] text-slate-500 block leading-none mt-0.5">Floor Executive 1</span>
+                </div>
+              </div>
+              <span id="badge-status-Salesman-1" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-200 text-slate-700">
                 Pending
               </span>
             </div>
-            <div class="w-12 h-12 rounded-xl bg-purple-600/20 text-purple-400 border border-purple-500/30 flex items-center justify-center text-xl mb-4">
-              <i class="fa-solid fa-person-circle-check"></i>
-            </div>
-            <h3 class="font-outfit font-bold text-lg text-white group-hover:text-purple-400 transition-colors">Salesman 1</h3>
-            <p class="text-xs text-slate-400 mt-1">Executive floor sales &amp; vehicle test drives</p>
             
-            <div class="mt-4 pt-3 border-t border-white/5 flex items-center justify-between gap-2">
-              <button type="button" onclick="quickMarkNotAvailable('Salesman 1')" class="px-2.5 py-1.5 rounded-lg bg-slate-800/90 hover:bg-amber-500/20 hover:text-amber-300 hover:border-amber-500/40 border border-slate-700 text-slate-300 text-[11px] font-semibold transition-all flex items-center gap-1">
-                <i class="fa-solid fa-ban text-[10px] text-amber-400"></i> Not Available
+            <div class="mt-2.5 pt-2 border-t border-slate-200/80 flex items-center justify-between gap-1.5">
+              <button type="button" onclick="quickMarkNotAvailable('Salesman 1')" class="px-2 py-1 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-300 text-[10.5px] font-bold transition-all flex items-center gap-1">
+                <i class="fa-solid fa-ban text-amber-600"></i> Not Available
               </button>
-              <button type="button" onclick="selectDesignation('Salesman 1')" class="px-3 py-1.5 rounded-lg bg-purple-600/20 hover:bg-purple-600 text-purple-400 hover:text-white border border-purple-500/40 text-[11px] font-bold transition-all flex items-center gap-1">
-                Fill Form <i class="fa-solid fa-angle-right text-xs"></i>
+              <button type="button" onclick="selectDesignation('Salesman 1')" class="px-2.5 py-1 rounded-lg bg-purple-600 hover:bg-purple-700 text-white text-[11px] font-bold shadow-sm transition-all flex items-center gap-1">
+                Fill Form <i class="fa-solid fa-chevron-right text-[9px]"></i>
               </button>
             </div>
-            <!-- Last updated timestamp -->
-            <div class="mt-2.5 text-[10px] text-slate-400 flex items-center justify-between bg-black/40 px-2.5 py-1 rounded-md border border-white/5">
+            <div class="mt-1.5 text-[9.5px] text-slate-500 flex items-center justify-between bg-white px-2 py-0.5 rounded border border-slate-200">
               <span>Updated:</span>
-              <strong class="text-slate-300" id="time-Salesman-1">NA</strong>
+              <strong class="text-slate-700 font-mono" id="time-Salesman-1">NA</strong>
             </div>
           </div>
 
           <!-- 5. Salesman 2 -->
-          <div class="group relative rounded-2xl p-5 bg-gradient-to-b from-slate-900/80 to-slate-900/50 border border-white/10 hover:border-pink-500 hover:shadow-lg hover:shadow-pink-500/20 transition-all duration-300 md:col-span-2 lg:col-span-1">
-            <div class="absolute top-3 right-3">
-              <span id="badge-status-Salesman-2" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-800 text-slate-300 border border-slate-700">
+          <div class="rounded-xl p-3 sm:p-3.5 bg-slate-50 hover:bg-white border border-slate-200 hover:border-pink-400 hover:shadow-md transition-all sm:col-span-2 lg:col-span-1">
+            <div class="flex items-start justify-between gap-1.5">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-pink-100 text-pink-600 flex items-center justify-center text-sm font-bold">
+                  <i class="fa-solid fa-person-chalkboard"></i>
+                </div>
+                <div>
+                  <h3 class="font-outfit font-bold text-sm text-slate-900">Salesman 2</h3>
+                  <span class="text-[10px] text-slate-500 block leading-none mt-0.5">Floor Executive 2</span>
+                </div>
+              </div>
+              <span id="badge-status-Salesman-2" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-200 text-slate-700">
                 Pending
               </span>
             </div>
-            <div class="w-12 h-12 rounded-xl bg-pink-600/20 text-pink-400 border border-pink-500/30 flex items-center justify-center text-xl mb-4">
-              <i class="fa-solid fa-person-chalkboard"></i>
-            </div>
-            <h3 class="font-outfit font-bold text-lg text-white group-hover:text-pink-400 transition-colors">Salesman 2</h3>
-            <p class="text-xs text-slate-400 mt-1">Associate sales executive &amp; customer handling</p>
             
-            <div class="mt-4 pt-3 border-t border-white/5 flex items-center justify-between gap-2">
-              <button type="button" onclick="quickMarkNotAvailable('Salesman 2')" class="px-2.5 py-1.5 rounded-lg bg-slate-800/90 hover:bg-amber-500/20 hover:text-amber-300 hover:border-amber-500/40 border border-slate-700 text-slate-300 text-[11px] font-semibold transition-all flex items-center gap-1">
-                <i class="fa-solid fa-ban text-[10px] text-amber-400"></i> Not Available
+            <div class="mt-2.5 pt-2 border-t border-slate-200/80 flex items-center justify-between gap-1.5">
+              <button type="button" onclick="quickMarkNotAvailable('Salesman 2')" class="px-2 py-1 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-300 text-[10.5px] font-bold transition-all flex items-center gap-1">
+                <i class="fa-solid fa-ban text-amber-600"></i> Not Available
               </button>
-              <button type="button" onclick="selectDesignation('Salesman 2')" class="px-3 py-1.5 rounded-lg bg-pink-600/20 hover:bg-pink-600 text-pink-400 hover:text-white border border-pink-500/40 text-[11px] font-bold transition-all flex items-center gap-1">
-                Fill Form <i class="fa-solid fa-angle-right text-xs"></i>
+              <button type="button" onclick="selectDesignation('Salesman 2')" class="px-2.5 py-1 rounded-lg bg-pink-600 hover:bg-pink-700 text-white text-[11px] font-bold shadow-sm transition-all flex items-center gap-1">
+                Fill Form <i class="fa-solid fa-chevron-right text-[9px]"></i>
               </button>
             </div>
-            <!-- Last updated timestamp -->
-            <div class="mt-2.5 text-[10px] text-slate-400 flex items-center justify-between bg-black/40 px-2.5 py-1 rounded-md border border-white/5">
+            <div class="mt-1.5 text-[9.5px] text-slate-500 flex items-center justify-between bg-white px-2 py-0.5 rounded border border-slate-200">
               <span>Updated:</span>
-              <strong class="text-slate-300" id="time-Salesman-2">NA</strong>
+              <strong class="text-slate-700 font-mono" id="time-Salesman-2">NA</strong>
             </div>
           </div>
 
         </div>
 
-        <!-- Note info banner -->
-        <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800 text-xs text-slate-300 flex items-start sm:items-center gap-3">
-          <i class="fa-solid fa-circle-info text-red-400 text-base flex-shrink-0 mt-0.5 sm:mt-0"></i>
-          <div>
-            <span class="font-semibold text-slate-200">Policy Note:</span> Choose <strong>"Fill Form"</strong> to submit complete employee records (Bank &amp; cheque mandatory for Sales Manager). If any post is currently vacant or unassigned, click <strong>"Not Available"</strong> to record that status directly without needing personal details.
-          </div>
+        <div class="p-2.5 rounded-xl bg-slate-100 border border-slate-200 text-[11px] text-slate-600 flex items-center gap-2">
+          <i class="fa-solid fa-circle-info text-red-600 text-sm flex-shrink-0"></i>
+          <span>Click <strong>"Fill Form"</strong> to input staff record or <strong>"Not Available"</strong> if the post is unassigned.</span>
         </div>
       </div>
     </section>
 
     <!-- STEP 3: Manpower Details Input Form -->
-    <section id="step3Form" class="w-full hidden transition-all duration-500 transform">
-      <div class="glass-card rounded-2xl sm:rounded-3xl p-6 sm:p-10 border border-white/10 max-w-3xl mx-auto shadow-2xl">
+    <section id="step3Form" class="w-full hidden transition-all duration-300">
+      <div class="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 border border-slate-200 shadow-xl bg-white/95">
         
-        <!-- Top bar with Back button and Active designations -->
-        <div class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-white/10">
-          <div class="flex items-center gap-3">
-            <button onclick="goToStep2()" class="w-9 h-9 rounded-xl bg-slate-800/80 hover:bg-slate-700 border border-slate-700 flex items-center justify-center text-slate-300 hover:text-white transition-all shadow-sm" title="Back to Roles">
-              <i class="fa-solid fa-arrow-left text-sm"></i>
+        <!-- Header -->
+        <div class="flex items-center justify-between gap-2 pb-3.5 border-b border-slate-200">
+          <div class="flex items-center gap-2.5">
+            <button onclick="goToStep2()" class="w-8 h-8 rounded-lg bg-slate-100 hover:bg-slate-200 border border-slate-200 flex items-center justify-center text-slate-700 transition-all shadow-sm" title="Back to Roles">
+              <i class="fa-solid fa-arrow-left text-xs"></i>
             </button>
             <div>
-              <h2 class="text-xl sm:text-2xl font-bold font-outfit text-white">Employee Information</h2>
-              <p class="text-xs text-slate-400" id="formSubheading">Fill details for selected manpower designation</p>
+              <h2 class="text-base sm:text-lg font-bold font-outfit text-slate-900 leading-tight">Employee Registration</h2>
+              <p class="text-[11px] text-slate-500">Provide staff information for official dealership records</p>
             </div>
           </div>
 
-          <div class="flex flex-wrap items-center gap-2">
-            <span id="formBadgeLocation" class="px-3 py-1 rounded-lg bg-slate-800/90 text-slate-300 border border-slate-700 text-xs font-medium"></span>
-            <span id="formBadgeDesignation" class="px-3 py-1 rounded-lg bg-red-600/20 text-red-400 border border-red-500/30 text-xs font-bold"></span>
+          <div class="flex items-center gap-1.5">
+            <span id="formBadgeDesignation" class="px-2.5 py-1 rounded-md bg-red-100 text-red-700 border border-red-200 text-xs font-bold"></span>
           </div>
         </div>
 
-        <!-- The Main Form -->
-        <form id="manpowerDataForm" onsubmit="handleFormSubmission(event)" class="mt-6 space-y-5">
+        <form id="manpowerDataForm" onsubmit="handleFormSubmission(event)" class="mt-3.5 space-y-3.5">
           
-          <!-- Availability Selection Toggle (Active Staff vs Not Available Now) -->
-          <div class="p-4 rounded-2xl bg-slate-900/90 border border-slate-700/80 shadow-inner">
-            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2.5">
-              Designation Status Option <span class="text-red-500">*</span>
-            </label>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <label id="labelOptionActive" class="relative flex items-center gap-3 p-3.5 rounded-xl border border-red-500 bg-red-600/10 cursor-pointer transition-all">
+          <!-- Status Mode Toggle -->
+          <div class="p-2.5 sm:p-3 rounded-xl bg-slate-50 border border-slate-200">
+            <div class="grid grid-cols-2 gap-2">
+              <label id="labelOptionActive" class="flex items-center gap-2 p-2.5 rounded-lg border-2 border-red-600 bg-red-50/70 cursor-pointer transition-all">
                 <input type="radio" name="availabilityStatus" value="available" checked onchange="handleAvailabilityChange('available')" class="text-red-600 focus:ring-red-500">
                 <div>
-                  <span class="text-xs font-bold text-white block">Active Staff / Fill Details</span>
-                  <span class="text-[11px] text-slate-300 block">Fill employee contact &amp; bank verification</span>
+                  <span class="text-xs font-bold text-slate-900 block leading-tight">Active Staff</span>
+                  <span class="text-[10px] text-slate-500 block">Fill employee details</span>
                 </div>
               </label>
 
-              <label id="labelOptionNotAvailable" class="relative flex items-center gap-3 p-3.5 rounded-xl border border-slate-700 bg-slate-800/40 hover:border-amber-500/60 cursor-pointer transition-all">
+              <label id="labelOptionNotAvailable" class="flex items-center gap-2 p-2.5 rounded-lg border-2 border-slate-200 bg-white hover:border-amber-400 cursor-pointer transition-all">
                 <input type="radio" name="availabilityStatus" value="not_available" onchange="handleAvailabilityChange('not_available')" class="text-amber-500 focus:ring-amber-500">
                 <div>
-                  <span class="text-xs font-bold text-amber-400 block flex items-center gap-1.5">
-                    <i class="fa-solid fa-ban text-[11px]"></i> Not Available Now
+                  <span class="text-xs font-bold text-amber-700 block leading-tight flex items-center gap-1">
+                    <i class="fa-solid fa-ban text-[10px]"></i> Not Available
                   </span>
-                  <span class="text-[11px] text-slate-400 block">Mark position as vacant / unassigned</span>
+                  <span class="text-[10px] text-slate-500 block">Mark vacant / unassigned</span>
                 </div>
               </label>
             </div>
           </div>
 
-          <!-- Locked Designation Field -->
+          <!-- Locked Designation -->
           <div>
-            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
-              Assigned Designation <span class="text-slate-400">(Selected role)</span>
+            <label class="block text-[11px] font-bold text-slate-600 uppercase tracking-wider mb-1">
+              Assigned Designation
             </label>
             <div class="relative">
-              <input type="text" id="inputDesignation" readonly class="glass-input w-full rounded-xl px-4 py-3 text-white font-bold bg-slate-900/90 border border-slate-700 cursor-not-allowed select-none opacity-90 pl-11 text-sm sm:text-base">
-              <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center px-4 text-red-500">
-                <i class="fa-solid fa-lock"></i>
+              <input type="text" id="inputDesignation" readonly class="glass-input w-full rounded-xl px-3.5 py-2.5 text-slate-800 font-bold bg-slate-100 border border-slate-300 cursor-not-allowed select-none pl-9 text-xs sm:text-sm">
+              <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center px-3 text-red-600">
+                <i class="fa-solid fa-lock text-xs"></i>
               </div>
             </div>
           </div>
 
-          <!-- NOT AVAILABLE BANNER & NOTES (Visible only when Not Available is toggled) -->
-          <div id="notAvailableNoticeSection" class="hidden rounded-2xl p-5 bg-amber-950/30 border border-amber-500/40 space-y-3">
-            <div class="flex items-start gap-3">
-              <i class="fa-solid fa-circle-exclamation text-amber-400 text-lg flex-shrink-0 mt-0.5"></i>
+          <!-- NOT AVAILABLE BANNER -->
+          <div id="notAvailableNoticeSection" class="hidden rounded-xl p-3.5 bg-amber-50 border border-amber-300 space-y-2.5">
+            <div class="flex items-start gap-2.5">
+              <i class="fa-solid fa-circle-exclamation text-amber-600 text-base flex-shrink-0 mt-0.5"></i>
               <div>
-                <h4 class="text-sm font-bold text-amber-300">Marking Designation as "Not Available Now"</h4>
-                <p class="text-xs text-slate-300 mt-1">
-                  You are recording that the <strong id="notAvailableRoleName" class="text-white">--</strong> role is currently unfilled or unavailable at this dealership. Personal &amp; bank details are not required.
+                <h4 class="text-xs font-bold text-amber-900">Designation Marked as "Not Available Now"</h4>
+                <p class="text-[11px] text-amber-800 mt-0.5">
+                  Recording <strong id="notAvailableRoleName">--</strong> as vacant. Personal &amp; bank details are skipped.
                 </p>
               </div>
             </div>
 
             <div>
-              <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
-                Optional Remarks / Reason
+              <label class="block text-[10.5px] font-bold text-amber-900 uppercase tracking-wider mb-1">
+                Optional Reason
               </label>
-              <input type="text" id="inputNotAvailableRemark" placeholder="e.g. Hiring in progress / Candidate resigned / Vacant" class="glass-input w-full rounded-xl px-4 py-2.5 text-white placeholder-slate-500 text-xs focus:outline-none">
+              <input type="text" id="inputNotAvailableRemark" placeholder="e.g. Vacant / Hiring in progress" class="glass-input w-full rounded-lg px-3 py-2 text-slate-900 placeholder-slate-400 text-xs focus:outline-none">
             </div>
           </div>
 
-          <!-- ACTIVE EMPLOYEE DETAILS CONTAINER (Hidden when Not Available is selected) -->
-          <div id="activeEmployeeFieldsSection" class="space-y-5">
-            <!-- Basic Details Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- ACTIVE EMPLOYEE FIELDS CONTAINER -->
+          <div id="activeEmployeeFieldsSection" class="space-y-3.5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
               
-              <!-- Employee Full Name -->
-              <div class="md:col-span-2">
-                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+              <!-- Name -->
+              <div class="sm:col-span-2">
+                <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
                   Employee Full Name <span class="text-red-500">*</span>
                 </label>
                 <div class="relative">
-                  <input type="text" id="inputEmpName" required placeholder="Type your full name" class="glass-input w-full rounded-xl px-4 py-3 text-white placeholder-slate-500 pl-11 text-sm focus:outline-none">
-                  <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center px-4 text-slate-400">
-                    <i class="fa-solid fa-user text-sm"></i>
+                  <input type="text" id="inputEmpName" required placeholder="Type your full name" class="glass-input w-full rounded-xl px-3.5 py-2.5 text-slate-900 placeholder-slate-400 pl-9 text-xs sm:text-sm focus:outline-none shadow-sm">
+                  <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center px-3 text-slate-400">
+                    <i class="fa-solid fa-user text-xs"></i>
                   </div>
                 </div>
               </div>
 
-              <!-- WhatsApp Mobile Number -->
+              <!-- WhatsApp -->
               <div>
-                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
-                  WhatsApp Mobile Number <span class="text-red-500">*</span>
+                <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
+                  WhatsApp Number <span class="text-red-500">*</span>
                 </label>
                 <div class="relative">
-                  <input type="tel" id="inputWhatsapp" required pattern="[0-9]{10}" maxlength="10" placeholder="10-digit number (e.g. 9876543210)" class="glass-input w-full rounded-xl px-4 py-3 text-white placeholder-slate-500 pl-11 text-sm focus:outline-none">
-                  <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center px-4 text-emerald-400">
+                  <input type="tel" id="inputWhatsapp" required pattern="[0-9]{10}" maxlength="10" placeholder="10-digit number" class="glass-input w-full rounded-xl px-3.5 py-2.5 text-slate-900 placeholder-slate-400 pl-9 text-xs sm:text-sm focus:outline-none shadow-sm">
+                  <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center px-3 text-emerald-600">
                     <i class="fa-brands fa-whatsapp text-sm"></i>
                   </div>
                 </div>
-                <p class="text-[11px] text-slate-400 mt-1">Must be an active WhatsApp number</p>
               </div>
 
-              <!-- Email ID -->
+              <!-- Email -->
               <div>
-                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
-                  Official / Personal Email ID <span class="text-red-500">*</span>
+                <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
+                  Official / Personal Email <span class="text-red-500">*</span>
                 </label>
                 <div class="relative">
-                  <input type="email" id="inputEmail" required placeholder="name@domain.com" class="glass-input w-full rounded-xl px-4 py-3 text-white placeholder-slate-500 pl-11 text-sm focus:outline-none">
-                  <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center px-4 text-slate-400">
-                    <i class="fa-regular fa-envelope text-sm"></i>
+                  <input type="email" id="inputEmail" required placeholder="name@domain.com" class="glass-input w-full rounded-xl px-3.5 py-2.5 text-slate-900 placeholder-slate-400 pl-9 text-xs sm:text-sm focus:outline-none shadow-sm">
+                  <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center px-3 text-slate-400">
+                    <i class="fa-regular fa-envelope text-xs"></i>
                   </div>
                 </div>
-                <p class="text-[11px] text-slate-400 mt-1">Confirmation receipt will be emailed here</p>
               </div>
 
-              <!-- MANDATORY EMPLOYEE LIVE PHOTO (Camera Only) -->
-              <div class="md:col-span-2 mt-2">
-                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
-                  Employee Live Photo <span class="text-red-500">* (Camera Capture Only)</span>
+              <!-- EMPLOYEE LIVE PHOTO WITH PROMINENT PREVIEW -->
+              <div class="sm:col-span-2">
+                <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
+                  Employee Live Photo <span class="text-red-500">* (Camera Snap Only)</span>
                 </label>
-                <div class="p-4 rounded-2xl bg-slate-900/70 border border-slate-700/80 flex flex-col sm:flex-row items-center justify-between gap-4">
-                  <div class="flex items-center gap-3">
-                    <div id="empPhotoThumbContainer" class="w-16 h-16 rounded-xl bg-slate-800 border-2 border-dashed border-slate-600 flex items-center justify-center overflow-hidden text-slate-500">
-                      <i id="empPhotoPlaceholderIcon" class="fa-solid fa-user text-2xl"></i>
+                
+                <div class="p-3 sm:p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-sm">
+                  <div class="flex items-center gap-3 w-full sm:w-auto">
+                    <!-- High-visibility square photo box -->
+                    <div id="empPhotoThumbContainer" class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl bg-white border-2 border-dashed border-slate-300 flex items-center justify-center overflow-hidden text-slate-400 shadow-inner flex-shrink-0 relative">
+                      <i id="empPhotoPlaceholderIcon" class="fa-solid fa-camera text-2xl"></i>
                       <img id="empPhotoPreview" class="w-full h-full object-cover hidden" alt="Employee Photo" />
                     </div>
+
                     <div>
-                      <h4 class="text-xs font-bold text-white flex items-center gap-1.5">
-                        <i class="fa-solid fa-camera text-red-500"></i> Real-time Staff Photo
+                      <h4 class="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                        <i class="fa-solid fa-camera text-red-600"></i> Staff Camera Snapshot
                       </h4>
-                      <p id="empPhotoStatusText" class="text-[11px] text-slate-400 mt-0.5">Live photo required (Gallery upload strictly disabled)</p>
-                      <p id="empPhotoSuccessBadge" class="text-[11px] text-emerald-400 font-semibold hidden flex items-center gap-1 mt-0.5">
-                        <i class="fa-solid fa-circle-check"></i> Photo Captured &amp; Ready
+                      <p id="empPhotoStatusText" class="text-[11px] text-slate-500 mt-0.5">Real-time live photo required (No gallery)</p>
+                      <p id="empPhotoSuccessBadge" class="text-[11px] text-emerald-700 font-bold hidden items-center gap-1 mt-0.5">
+                        <i class="fa-solid fa-circle-check text-emerald-600"></i> Photo Captured &amp; Ready
                       </p>
                     </div>
                   </div>
 
-                  <div class="flex items-center gap-2 w-full sm:w-auto">
-                    <button type="button" onclick="openCameraModal('employee')" class="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-600 text-white font-bold text-xs shadow-md shadow-red-600/30 flex items-center justify-center gap-2 transition-all">
+                  <div class="flex items-center gap-2 w-full sm:w-auto justify-end">
+                    <button type="button" onclick="openCameraModal('employee')" class="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white font-bold text-xs shadow-md shadow-red-600/25 flex items-center justify-center gap-2 transition-all">
                       <i class="fa-solid fa-camera"></i> <span id="empPhotoBtnLabel">Take Live Photo</span>
                     </button>
-                    <button type="button" id="btnRetakeEmpPhoto" onclick="openCameraModal('employee')" class="hidden px-3 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 text-xs font-semibold" title="Retake Photo">
+                    <button type="button" id="btnRetakeEmpPhoto" onclick="openCameraModal('employee')" class="hidden px-3 py-2.5 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-bold" title="Retake Photo">
                       <i class="fa-solid fa-arrows-rotate"></i>
                     </button>
                   </div>
                 </div>
-                <p id="empPhotoErrorMsg" class="text-xs text-red-400 mt-1.5 hidden items-center gap-1">
-                  <i class="fa-solid fa-circle-exclamation"></i> Live employee photo is mandatory. Please capture photo using camera.
+                <p id="empPhotoErrorMsg" class="text-xs text-red-600 font-semibold mt-1 hidden items-center gap-1">
+                  <i class="fa-solid fa-circle-exclamation"></i> Live employee photo is mandatory.
                 </p>
               </div>
 
             </div>
 
-            <!-- CONDITIONAL SECTION: Accounts & Passbook details (Only for Sales Manager) -->
-            <div id="salesManagerBankingSection" class="hidden transition-all duration-300">
-              <div class="rounded-2xl p-5 sm:p-6 bg-slate-900/80 border border-red-500/30 shadow-inner mt-4 space-y-4">
-                <div class="flex items-center gap-2 pb-3 border-b border-white/10">
-                  <i class="fa-solid fa-building-columns text-red-500 text-lg"></i>
+            <!-- SALES MANAGER BANK DETAILS SECTION -->
+            <div id="salesManagerBankingSection" class="hidden transition-all">
+              <div class="rounded-xl p-3.5 sm:p-4 bg-red-50/50 border border-red-200 space-y-3 shadow-sm">
+                <div class="flex items-center gap-2 pb-2 border-b border-red-200">
+                  <i class="fa-solid fa-building-columns text-red-600 text-base"></i>
                   <div>
-                    <h3 class="font-outfit font-bold text-white text-base">Bank Account &amp; Document Verification</h3>
-                    <p class="text-xs text-slate-400">Mandatory for Sales Manager honorarium &amp; official payroll disbursements</p>
+                    <h3 class="font-outfit font-bold text-slate-900 text-xs sm:text-sm">Bank Verification (Sales Manager Only)</h3>
+                    <p class="text-[10px] text-slate-500">Official honorarium and payroll bank account records</p>
                   </div>
                 </div>
 
-                <!-- Bank Account Holder Name -->
                 <div>
-                  <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
-                    Bank Account Holder Name (As per Bank Records) <span class="text-red-500">*</span>
+                  <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
+                    Account Holder Name <span class="text-red-500">*</span>
                   </label>
-                  <div class="relative">
-                    <input type="text" id="inputBankName" placeholder="Full name as printed in passbook" class="glass-input w-full rounded-xl px-4 py-3 text-white placeholder-slate-500 pl-11 text-sm focus:outline-none uppercase">
-                    <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center px-4 text-slate-400">
-                      <i class="fa-solid fa-id-card text-sm"></i>
-                    </div>
-                  </div>
+                  <input type="text" id="inputBankName" placeholder="Full name as printed in passbook" class="glass-input w-full rounded-xl px-3.5 py-2.5 text-slate-900 placeholder-slate-400 text-xs sm:text-sm uppercase focus:outline-none">
                 </div>
 
-                <!-- Account Number & Confirm -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+                    <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
                       Account Number <span class="text-red-500">*</span>
                     </label>
                     <div class="relative">
-                      <input type="password" id="inputAccountNo" placeholder="Enter bank account number" class="glass-input w-full rounded-xl px-4 py-3 text-white placeholder-slate-500 pl-11 pr-10 text-sm focus:outline-none">
-                      <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center px-4 text-slate-400">
-                        <i class="fa-solid fa-hashtag text-sm"></i>
-                      </div>
-                      <button type="button" onclick="togglePasswordVisibility('inputAccountNo', this)" class="absolute inset-y-0 right-0 flex items-center px-3.5 text-slate-400 hover:text-white">
-                        <i class="fa-regular fa-eye text-sm"></i>
+                      <input type="password" id="inputAccountNo" placeholder="Enter bank account number" class="glass-input w-full rounded-xl px-3.5 py-2.5 text-slate-900 placeholder-slate-400 pr-9 text-xs sm:text-sm focus:outline-none">
+                      <button type="button" onclick="togglePasswordVisibility('inputAccountNo', this)" class="absolute inset-y-0 right-0 flex items-center px-3 text-slate-400 hover:text-slate-700">
+                        <i class="fa-regular fa-eye text-xs"></i>
                       </button>
                     </div>
                   </div>
 
                   <div>
-                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+                    <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
                       Confirm Account Number <span class="text-red-500">*</span>
                     </label>
-                    <div class="relative">
-                      <input type="text" id="inputConfirmAccountNo" placeholder="Re-enter bank account number" class="glass-input w-full rounded-xl px-4 py-3 text-white placeholder-slate-500 pl-11 text-sm focus:outline-none">
-                      <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center px-4 text-slate-400">
-                        <i class="fa-solid fa-circle-check text-sm"></i>
-                      </div>
-                    </div>
+                    <input type="text" id="inputConfirmAccountNo" placeholder="Re-enter bank account number" class="glass-input w-full rounded-xl px-3.5 py-2.5 text-slate-900 placeholder-slate-400 text-xs sm:text-sm focus:outline-none">
                   </div>
                 </div>
 
-                <!-- IFSC Code -->
                 <div>
-                  <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
-                    Bank IFSC Code <span class="text-red-500">*</span>
+                  <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
+                    IFSC Code <span class="text-red-500">*</span>
                   </label>
-                  <div class="relative">
-                    <input type="text" id="inputIfsc" maxlength="11" placeholder="e.g. SBIN0001234 / HDFC0000456" class="glass-input w-full rounded-xl px-4 py-3 text-white placeholder-slate-500 pl-11 text-sm focus:outline-none uppercase font-mono tracking-wider">
-                    <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center px-4 text-slate-400">
-                      <i class="fa-solid fa-landmark text-sm"></i>
-                    </div>
-                  </div>
+                  <input type="text" id="inputIfsc" maxlength="11" placeholder="e.g. SBIN0001234 / HDFC0000456" class="glass-input w-full rounded-xl px-3.5 py-2.5 text-slate-900 placeholder-slate-400 text-xs sm:text-sm uppercase font-mono tracking-wider focus:outline-none">
                 </div>
 
                 <!-- Passbook / Cheque Picture (Camera Only) -->
                 <div>
-                  <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
-                    Passbook / Cancelled Cheque Picture <span class="text-red-500">* (Camera Capture Only)</span>
+                  <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
+                    Passbook / Cancelled Cheque <span class="text-red-500">* (Camera Snap Only)</span>
                   </label>
                   
-                  <div class="flex flex-col sm:flex-row items-center justify-between p-4 rounded-xl border border-dashed border-slate-600 bg-slate-800/40 gap-4">
-                    <div class="flex items-center gap-3">
-                      <div id="chequePhotoThumbContainer" class="w-16 h-16 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center overflow-hidden text-slate-500">
+                  <div class="flex flex-col sm:flex-row items-center justify-between p-3 rounded-xl border border-dashed border-slate-300 bg-white gap-3">
+                    <div class="flex items-center gap-3 w-full sm:w-auto">
+                      <div id="chequePhotoThumbContainer" class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl bg-slate-50 border border-slate-300 flex items-center justify-center overflow-hidden text-slate-400 flex-shrink-0">
                         <i id="chequePhotoPlaceholderIcon" class="fa-solid fa-receipt text-2xl"></i>
                         <img id="chequePhotoPreview" class="w-full h-full object-cover hidden" alt="Cheque preview" />
                       </div>
                       <div>
-                        <span class="text-xs font-bold text-slate-200 block">Cheque / Passbook Image</span>
-                        <span id="chequePhotoStatusText" class="text-[11px] text-slate-400 block mt-0.5">Capture original passbook page or cancelled cheque</span>
-                        <span id="chequePhotoSuccessBadge" class="text-[11px] text-emerald-400 font-semibold hidden flex items-center gap-1 mt-0.5">
-                          <i class="fa-solid fa-circle-check"></i> Cheque Document Captured
+                        <span class="text-xs font-bold text-slate-900 block">Cheque / Passbook Image</span>
+                        <span id="chequePhotoStatusText" class="text-[11px] text-slate-500 block mt-0.5">Snap original cancelled cheque or passbook</span>
+                        <span id="chequePhotoSuccessBadge" class="text-[11px] text-emerald-700 font-bold hidden items-center gap-1 mt-0.5">
+                          <i class="fa-solid fa-circle-check text-emerald-600"></i> Document Captured
                         </span>
                       </div>
                     </div>
 
-                    <button type="button" onclick="openCameraModal('cheque')" class="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-md shadow-emerald-600/30 flex items-center justify-center gap-2 transition-all">
+                    <button type="button" onclick="openCameraModal('cheque')" class="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-md shadow-emerald-600/25 flex items-center justify-center gap-2 transition-all">
                       <i class="fa-solid fa-camera"></i> <span id="chequePhotoBtnLabel">Capture Document</span>
                     </button>
                   </div>
 
-                  <p id="chequeErrorMsg" class="text-xs text-red-400 mt-2 hidden items-center gap-1">
+                  <p id="chequeErrorMsg" class="text-xs text-red-600 font-semibold mt-1 hidden items-center gap-1">
                     <i class="fa-solid fa-circle-exclamation"></i> Please take a camera picture of Passbook / Cheque.
                   </p>
                 </div>
@@ -695,18 +660,18 @@
             </div>
           </div>
 
-          <!-- Validation Warning alert box -->
-          <div id="formValidationErrorBox" class="hidden p-3.5 rounded-xl bg-red-950/60 border border-red-600/50 text-xs text-red-200 flex items-center gap-2.5">
-            <i class="fa-solid fa-triangle-exclamation text-base text-red-400 flex-shrink-0"></i>
-            <span id="formValidationText">Please check all required fields.</span>
+          <!-- Validation Warning -->
+          <div id="formValidationErrorBox" class="hidden p-3 rounded-xl bg-red-50 border border-red-300 text-xs text-red-700 font-medium flex items-center gap-2">
+            <i class="fa-solid fa-triangle-exclamation text-red-600 flex-shrink-0"></i>
+            <span id="formValidationText">Please check required fields.</span>
           </div>
 
-          <!-- Submit Action Button -->
-          <div class="pt-4">
-            <button type="submit" id="btnSubmitForm" class="shimmer-btn w-full py-4 rounded-xl bg-gradient-to-r from-red-600 via-red-500 to-red-600 hover:from-red-500 hover:to-red-700 text-white font-bold text-base tracking-wide shadow-xl shadow-red-600/40 hover:shadow-red-600/60 transition-all duration-300 flex items-center justify-center gap-2 group active:scale-[0.99]">
+          <!-- Submit Button -->
+          <div class="pt-2">
+            <button type="submit" id="btnSubmitForm" class="shimmer-btn w-full py-3.5 rounded-xl bg-gradient-to-r from-red-600 via-red-500 to-red-600 hover:from-red-700 hover:to-red-600 text-white font-bold text-sm tracking-wide shadow-lg shadow-red-600/30 hover:shadow-red-600/40 transition-all flex items-center justify-center gap-2 group active:scale-[0.99]">
               <span id="submitBtnText">Submit AD Manpower Details</span>
-              <i id="submitBtnIcon" class="fa-solid fa-paper-plane group-hover:translate-x-1 group-hover:-translate-y-0.5 transition-transform duration-300"></i>
-              <svg id="submitSpinner" class="hidden animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <i id="submitBtnIcon" class="fa-solid fa-paper-plane group-hover:translate-x-1 transition-transform"></i>
+              <svg id="submitSpinner" class="hidden animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                 <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
               </svg>
@@ -717,111 +682,107 @@
       </div>
     </section>
 
-    <!-- STEP 4: Success / Thank You Confirmation Screen -->
-    <section id="step4ThankYou" class="w-full hidden transition-all duration-500 transform">
-      <div class="glass-card rounded-2xl sm:rounded-3xl p-6 sm:p-12 border border-white/10 max-w-2xl mx-auto shadow-2xl text-center relative overflow-hidden">
+    <!-- STEP 4: Success Screen -->
+    <section id="step4ThankYou" class="w-full hidden transition-all duration-300">
+      <div class="glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 max-w-lg mx-auto shadow-xl text-center bg-white/95">
         
-        <!-- Glowing aura behind success icon -->
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-48 bg-emerald-500/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-tr from-emerald-600 to-teal-500 flex items-center justify-center text-white text-2xl shadow-lg shadow-emerald-600/25 mb-4">
+          <i class="fa-solid fa-check"></i>
+        </div>
 
-        <div class="relative z-10">
-          <!-- Animated Checkmark Icon -->
-          <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center text-white text-3xl shadow-xl shadow-emerald-500/30 mb-6 animate-bounce">
-            <i class="fa-solid fa-check"></i>
-          </div>
+        <h2 class="text-xl sm:text-2xl font-extrabold font-outfit text-slate-900 tracking-tight">Submission Successful!</h2>
+        
+        <div class="mt-3 p-3.5 rounded-xl bg-emerald-50 border border-emerald-200 text-left space-y-1">
+          <p class="text-xs font-bold text-emerald-800 flex items-center gap-1.5">
+            <i class="fa-solid fa-circle-check text-emerald-600"></i> Details Recorded in Google Sheet
+          </p>
+          <p class="text-[11px] sm:text-xs text-slate-700 leading-relaxed">
+            Your details have been submitted to <strong class="text-slate-900">Masha Honda</strong>. An acknowledgment email has been dispatched.
+          </p>
+        </div>
 
-          <h2 class="text-2xl sm:text-3xl font-extrabold font-outfit text-white tracking-tight">Submission Successful!</h2>
-          
-          <div class="mt-4 p-4 rounded-2xl bg-slate-900/80 border border-slate-700/80 text-left space-y-2">
-            <p class="text-sm font-semibold text-emerald-400 flex items-center gap-2">
-              <i class="fa-solid fa-shield-check"></i> Details Recorded in Google Sheet
-            </p>
-            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              Your details have been submitted to <strong class="text-white">Masha Honda</strong>. A welcome email containing all the filled details has been dispatched to your email address.
-            </p>
+        <!-- Summary Card -->
+        <div class="my-4 p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-left text-xs space-y-1.5 font-mono">
+          <div class="flex justify-between border-b border-slate-200 pb-1">
+            <span class="text-slate-500 font-sans">Dealership:</span>
+            <span class="text-slate-900 font-semibold text-right" id="summaryDealer">--</span>
           </div>
+          <div class="flex justify-between border-b border-slate-200 pb-1">
+            <span class="text-slate-500 font-sans">Role:</span>
+            <span class="text-red-600 font-bold" id="summaryRole">--</span>
+          </div>
+          <div class="flex justify-between border-b border-slate-200 pb-1">
+            <span class="text-slate-500 font-sans">Employee:</span>
+            <span class="text-slate-900 font-semibold" id="summaryName">--</span>
+          </div>
+          <div class="flex justify-between border-b border-slate-200 pb-1">
+            <span class="text-slate-500 font-sans">WhatsApp:</span>
+            <span class="text-slate-700" id="summaryMobile">--</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-500 font-sans">Timestamp:</span>
+            <span class="text-emerald-700 font-semibold" id="summaryTimestamp">--</span>
+          </div>
+        </div>
 
-          <!-- Submission Summary Card -->
-          <div class="my-6 p-4 rounded-xl bg-slate-950/60 border border-white/10 text-left text-xs space-y-2 font-mono">
-            <div class="flex justify-between border-b border-white/5 pb-1.5">
-              <span class="text-slate-400">Dealership Location:</span>
-              <span class="text-white font-semibold text-right" id="summaryDealer">--</span>
-            </div>
-            <div class="flex justify-between border-b border-white/5 pb-1.5">
-              <span class="text-slate-400">Role Designation:</span>
-              <span class="text-red-400 font-bold" id="summaryRole">--</span>
-            </div>
-            <div class="flex justify-between border-b border-white/5 pb-1.5">
-              <span class="text-slate-400">Employee Name:</span>
-              <span class="text-white font-semibold" id="summaryName">--</span>
-            </div>
-            <div class="flex justify-between border-b border-white/5 pb-1.5">
-              <span class="text-slate-400">WhatsApp Mobile:</span>
-              <span class="text-slate-300" id="summaryMobile">--</span>
-            </div>
-            <div class="flex justify-between">
-              <span class="text-slate-400">Submission Timestamp:</span>
-              <span class="text-emerald-400" id="summaryTimestamp">--</span>
-            </div>
-          </div>
-
-          <!-- Action Buttons -->
-          <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <button type="button" onclick="resetAndFillAnother()" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-600 text-white font-bold text-sm shadow-lg shadow-red-600/30 transition-all flex items-center justify-center gap-2">
-              <i class="fa-solid fa-plus"></i> Fill Another Role
-            </button>
-            <button type="button" onclick="goToStep1()" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 hover:text-white font-semibold text-sm transition-all flex items-center justify-center gap-2">
-              <i class="fa-solid fa-house"></i> Home Screen
-            </button>
-          </div>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-2.5">
+          <button type="button" onclick="resetAndFillAnother()" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs shadow-md shadow-red-600/25 transition-all flex items-center justify-center gap-1.5">
+            <i class="fa-solid fa-plus"></i> Fill Another Role
+          </button>
+          <button type="button" onclick="goToStep1()" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 font-semibold text-xs transition-all flex items-center justify-center gap-1.5">
+            <i class="fa-solid fa-house"></i> Home Screen
+          </button>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- Live Camera Modal with Front / Back Switch -->
-  <div id="cameraModal" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
-    <div class="glass-card rounded-2xl sm:rounded-3xl p-5 max-w-lg w-full border border-white/20 relative shadow-2xl">
-      <div class="flex items-center justify-between pb-3 border-b border-white/10">
-        <h3 class="text-sm sm:text-base font-bold text-white flex items-center gap-2">
-          <i class="fa-solid fa-camera text-red-500"></i> <span id="cameraModalHeading">Capture Live Camera Picture</span>
+  <!-- LARGE EXPANDED CAMERA MODAL -->
+  <div id="cameraModal" class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-5">
+    <div class="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 max-w-2xl w-full border border-slate-200 relative shadow-2xl bg-white">
+      <div class="flex items-center justify-between pb-2.5 border-b border-slate-200">
+        <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2">
+          <i class="fa-solid fa-camera text-red-600"></i> <span id="cameraModalHeading">Capture Live Camera Picture</span>
         </h3>
-        <button type="button" onclick="closeCameraModal()" class="text-slate-400 hover:text-white p-1">
+        <button type="button" onclick="closeCameraModal()" class="text-slate-400 hover:text-slate-700 p-1">
           <i class="fa-solid fa-xmark text-lg"></i>
         </button>
       </div>
 
-      <!-- Viewfinder viewport -->
-      <div class="my-4 relative rounded-2xl overflow-hidden bg-black aspect-video flex items-center justify-center border border-slate-700 shadow-inner">
+      <!-- Significantly Enlarged Viewfinder Viewport -->
+      <div class="my-3 relative rounded-xl sm:rounded-2xl overflow-hidden bg-black w-full h-72 sm:h-96 flex items-center justify-center border-2 border-slate-800 shadow-inner">
         <video id="cameraVideo" autoplay playsinline class="w-full h-full object-cover"></video>
         <canvas id="cameraCanvas" class="hidden"></canvas>
 
-        <!-- Live Camera Mode Overlay Tag -->
-        <div class="absolute top-3 left-3 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] text-white font-mono flex items-center gap-1.5 border border-white/15">
+        <!-- Guideline framing overlay -->
+        <div class="absolute inset-4 sm:inset-8 border-2 border-white/40 rounded-xl pointer-events-none flex items-center justify-center">
+          <div class="text-white/60 text-xs font-mono bg-black/40 px-3 py-1 rounded-full">
+            Fit face / document inside frame
+          </div>
+        </div>
+
+        <!-- Camera Facing Indicator -->
+        <div class="absolute top-3 left-3 bg-black/70 backdrop-blur-sm px-2.5 py-1 rounded-full text-[10px] text-white font-mono flex items-center gap-1.5 border border-white/20">
           <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
           <span id="cameraFacingBadge">Camera: Front</span>
         </div>
 
-        <!-- Flip Camera Button (Front / Back switch) -->
-        <button type="button" onclick="switchCameraFacing()" class="absolute top-3 right-3 bg-black/60 hover:bg-black/80 backdrop-blur-md p-2 rounded-full text-white text-xs border border-white/20 shadow transition-transform active:rotate-180 duration-300" title="Switch Front / Back Camera">
+        <!-- Flip Camera Quick Button -->
+        <button type="button" onclick="switchCameraFacing()" class="absolute top-3 right-3 bg-black/70 hover:bg-black/90 backdrop-blur-sm p-2 rounded-full text-white text-xs border border-white/20 shadow transition-transform active:rotate-180" title="Switch Camera">
           <i class="fa-solid fa-camera-rotate text-sm"></i>
         </button>
       </div>
 
-      <p class="text-[11px] text-slate-400 text-center mb-3">
-        Ensure good lighting and face/document clarity. Direct camera capture only.
-      </p>
-
-      <div class="flex items-center justify-between gap-3 pt-2 border-t border-white/10">
-        <button type="button" onclick="switchCameraFacing()" class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center gap-1.5">
-          <i class="fa-solid fa-camera-rotate"></i> Flip Camera
+      <div class="flex items-center justify-between gap-2 pt-2 border-t border-slate-200">
+        <button type="button" onclick="switchCameraFacing()" class="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold flex items-center gap-1.5 transition-all">
+          <i class="fa-solid fa-camera-rotate text-red-600"></i> Flip Front/Back
         </button>
         <div class="flex items-center gap-2">
-          <button type="button" onclick="closeCameraModal()" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold">
+          <button type="button" onclick="closeCameraModal()" class="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs font-semibold">
             Cancel
           </button>
-          <button type="button" onclick="captureSnapshot()" class="px-4 py-2 rounded-xl bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-600 text-white text-xs font-bold flex items-center gap-1.5 shadow-lg shadow-red-600/30">
+          <button type="button" onclick="captureSnapshot()" class="px-5 py-2 rounded-xl bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white text-xs font-bold flex items-center gap-1.5 shadow-md shadow-red-600/30">
             <i class="fa-solid fa-circle-dot"></i> Snap Photo
           </button>
         </div>
@@ -830,50 +791,45 @@
   </div>
 
   <!-- OTP Verification Modal (Valid for 5 Minutes) -->
-  <div id="otpModal" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
-    <div class="glass-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 max-w-md w-full border border-red-500/40 relative shadow-2xl overflow-hidden">
-      <!-- Glow accent -->
-      <div class="absolute -top-12 -right-12 w-28 h-28 bg-red-600/30 rounded-full blur-2xl"></div>
-
-      <div class="text-center mb-5">
-        <div class="w-14 h-14 mx-auto rounded-2xl bg-red-600/20 text-red-500 border border-red-500/40 flex items-center justify-center text-2xl mb-3 shadow-lg shadow-red-600/20">
+  <div id="otpModal" class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
+    <div class="glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-7 max-w-sm sm:max-w-md w-full border border-red-200 relative shadow-2xl bg-white">
+      <div class="text-center mb-4">
+        <div class="w-12 h-12 mx-auto rounded-2xl bg-red-100 text-red-600 flex items-center justify-center text-xl mb-2.5 shadow-sm">
           <i class="fa-solid fa-envelope-circle-check"></i>
         </div>
-        <h3 class="text-xl font-extrabold font-outfit text-white">Dealership Verification</h3>
-        <p class="text-xs text-slate-300 mt-1.5">
-          Enter the 6-digit OTP sent to registered email for <br>
-          <strong id="otpModalDealerName" class="text-red-400">Dealership</strong>
+        <h3 class="text-lg font-extrabold font-outfit text-slate-900">Dealership Verification</h3>
+        <p class="text-xs text-slate-600 mt-1">
+          Enter 6-digit OTP sent to registered email for <br>
+          <strong id="otpModalDealerName" class="text-red-600 font-bold">Dealership</strong>
         </p>
-        <p id="otpMaskedEmail" class="text-[11px] text-slate-400 font-mono mt-1"></p>
+        <p id="otpMaskedEmail" class="text-[11px] text-slate-500 font-mono mt-0.5"></p>
       </div>
 
       <!-- 5-Minute Timer Badge -->
-      <div class="flex items-center justify-center gap-2 mb-5">
-        <div class="px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-white/10 flex items-center gap-2 text-xs">
-          <i class="fa-regular fa-clock text-amber-400 animate-pulse"></i>
-          <span class="text-slate-400">Valid for:</span>
-          <span id="otpCountdownTimer" class="font-mono font-bold text-amber-400">05:00</span>
+      <div class="flex items-center justify-center gap-2 mb-4">
+        <div class="px-3 py-1 rounded-full bg-amber-50 border border-amber-200 flex items-center gap-1.5 text-xs text-amber-800">
+          <i class="fa-regular fa-clock text-amber-600 animate-pulse"></i>
+          <span>Valid for:</span>
+          <span id="otpCountdownTimer" class="font-mono font-bold text-amber-700">05:00</span>
         </div>
       </div>
 
       <!-- 6 Digits OTP Inputs Container -->
-      <div class="flex justify-center gap-2 sm:gap-3 mb-5" id="otpInputsContainer">
-        <input type="text" maxlength="1" inputmode="numeric" class="otp-box w-11 h-12 sm:w-12 sm:h-14 text-center text-xl font-bold font-mono rounded-xl bg-slate-900 border border-slate-700 text-white focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-500/30 transition-all">
-        <input type="text" maxlength="1" inputmode="numeric" class="otp-box w-11 h-12 sm:w-12 sm:h-14 text-center text-xl font-bold font-mono rounded-xl bg-slate-900 border border-slate-700 text-white focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-500/30 transition-all">
-        <input type="text" maxlength="1" inputmode="numeric" class="otp-box w-11 h-12 sm:w-12 sm:h-14 text-center text-xl font-bold font-mono rounded-xl bg-slate-900 border border-slate-700 text-white focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-500/30 transition-all">
-        <input type="text" maxlength="1" inputmode="numeric" class="otp-box w-11 h-12 sm:w-12 sm:h-14 text-center text-xl font-bold font-mono rounded-xl bg-slate-900 border border-slate-700 text-white focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-500/30 transition-all">
-        <input type="text" maxlength="1" inputmode="numeric" class="otp-box w-11 h-12 sm:w-12 sm:h-14 text-center text-xl font-bold font-mono rounded-xl bg-slate-900 border border-slate-700 text-white focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-500/30 transition-all">
-        <input type="text" maxlength="1" inputmode="numeric" class="otp-box w-11 h-12 sm:w-12 sm:h-14 text-center text-xl font-bold font-mono rounded-xl bg-slate-900 border border-slate-700 text-white focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-500/30 transition-all">
+      <div class="flex justify-center gap-1.5 sm:gap-2 mb-4" id="otpInputsContainer">
+        <input type="text" maxlength="1" inputmode="numeric" class="otp-box w-10 h-11 sm:w-11 sm:h-12 text-center text-lg sm:text-xl font-bold font-mono rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:border-red-600 focus:bg-white focus:outline-none focus:ring-2 focus:ring-red-600/20">
+        <input type="text" maxlength="1" inputmode="numeric" class="otp-box w-10 h-11 sm:w-11 sm:h-12 text-center text-lg sm:text-xl font-bold font-mono rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:border-red-600 focus:bg-white focus:outline-none focus:ring-2 focus:ring-red-600/20">
+        <input type="text" maxlength="1" inputmode="numeric" class="otp-box w-10 h-11 sm:w-11 sm:h-12 text-center text-lg sm:text-xl font-bold font-mono rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:border-red-600 focus:bg-white focus:outline-none focus:ring-2 focus:ring-red-600/20">
+        <input type="text" maxlength="1" inputmode="numeric" class="otp-box w-10 h-11 sm:w-11 sm:h-12 text-center text-lg sm:text-xl font-bold font-mono rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:border-red-600 focus:bg-white focus:outline-none focus:ring-2 focus:ring-red-600/20">
+        <input type="text" maxlength="1" inputmode="numeric" class="otp-box w-10 h-11 sm:w-11 sm:h-12 text-center text-lg sm:text-xl font-bold font-mono rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:border-red-600 focus:bg-white focus:outline-none focus:ring-2 focus:ring-red-600/20">
+        <input type="text" maxlength="1" inputmode="numeric" class="otp-box w-10 h-11 sm:w-11 sm:h-12 text-center text-lg sm:text-xl font-bold font-mono rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:border-red-600 focus:bg-white focus:outline-none focus:ring-2 focus:ring-red-600/20">
       </div>
 
-      <!-- Error / Status Message inside modal -->
-      <p id="otpModalErrorMsg" class="text-xs text-red-400 text-center mb-4 hidden">
-        <i class="fa-solid fa-circle-exclamation mr-1"></i> <span>Invalid OTP entered. Please try again.</span>
+      <p id="otpModalErrorMsg" class="text-xs text-red-600 font-semibold text-center mb-3 hidden">
+        <i class="fa-solid fa-circle-exclamation mr-1"></i> <span>Invalid OTP. Please try again.</span>
       </p>
 
-      <!-- Action Buttons -->
-      <div class="space-y-2.5">
-        <button type="button" id="btnVerifyOtp" onclick="handleVerifyOtpSubmit()" class="shimmer-btn w-full py-3.5 rounded-xl bg-gradient-to-r from-red-600 via-red-500 to-red-600 hover:from-red-500 hover:to-red-700 text-white font-bold text-sm tracking-wide shadow-lg shadow-red-600/40 transition-all flex items-center justify-center gap-2">
+      <div class="space-y-2">
+        <button type="button" id="btnVerifyOtp" onclick="handleVerifyOtpSubmit()" class="shimmer-btn w-full py-3 rounded-xl bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white font-bold text-xs sm:text-sm tracking-wide shadow-md shadow-red-600/25 transition-all flex items-center justify-center gap-1.5">
           <span id="verifyOtpBtnText">Verify OTP &amp; Proceed</span>
           <i id="verifyOtpBtnIcon" class="fa-solid fa-arrow-right"></i>
           <svg id="verifyOtpSpinner" class="hidden animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -882,11 +838,11 @@
           </svg>
         </button>
 
-        <div class="flex items-center justify-between text-xs pt-2">
-          <button type="button" onclick="closeOtpModal()" class="text-slate-400 hover:text-white transition-colors">
+        <div class="flex items-center justify-between text-xs pt-1.5">
+          <button type="button" onclick="closeOtpModal()" class="text-slate-500 hover:text-slate-800">
             Change Location
           </button>
-          <button type="button" id="btnResendOtp" onclick="requestOtpGeneration(true)" class="text-red-400 hover:text-red-300 font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+          <button type="button" id="btnResendOtp" onclick="requestOtpGeneration(true)" class="text-red-600 hover:text-red-700 font-bold disabled:opacity-50">
             Resend OTP
           </button>
         </div>
@@ -895,43 +851,43 @@
     </div>
   </div>
 
-  <!-- Quick Confirmation Modal for "Not Available Now" from Step 2 -->
-  <div id="quickNotAvailableModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-    <div class="glass-card rounded-2xl sm:rounded-3xl p-6 max-w-md w-full border border-amber-500/30 relative shadow-2xl">
-      <div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center text-xl mb-4">
+  <!-- Quick Not Available Modal -->
+  <div id="quickNotAvailableModal" class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
+    <div class="glass-card rounded-2xl p-5 max-w-sm sm:max-w-md w-full border border-amber-300 relative shadow-2xl bg-white">
+      <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-lg mb-3">
         <i class="fa-solid fa-ban"></i>
       </div>
-      <h3 class="text-lg font-bold text-white font-outfit">Confirm "Not Available Now"</h3>
-      <p class="text-xs text-slate-300 mt-2">
-        Are you sure you want to mark <strong id="quickModalRoleName" class="text-amber-400">--</strong> as <strong class="text-white">"Not Available Now"</strong> for <span id="quickModalDealerName" class="text-slate-300"></span>?
+      <h3 class="text-base font-bold text-slate-900 font-outfit">Confirm "Not Available Now"</h3>
+      <p class="text-xs text-slate-600 mt-1">
+        Mark <strong id="quickModalRoleName" class="text-amber-700">--</strong> as <strong class="text-slate-900">"Not Available Now"</strong> for <span id="quickModalDealerName"></span>?
       </p>
 
-      <div class="mt-4">
-        <label class="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
-          Reason / Remarks (Optional)
+      <div class="mt-3">
+        <label class="block text-[10.5px] font-bold text-slate-600 uppercase tracking-wider mb-1">
+          Optional Reason / Remarks
         </label>
-        <input type="text" id="quickModalRemark" placeholder="e.g. Position Vacant / Sourcing candidate" class="glass-input w-full rounded-xl px-3.5 py-2.5 text-white text-xs focus:outline-none">
+        <input type="text" id="quickModalRemark" placeholder="e.g. Vacant / Sourcing candidate" class="glass-input w-full rounded-xl px-3 py-2 text-slate-900 text-xs focus:outline-none">
       </div>
 
-      <div class="mt-6 flex items-center justify-end gap-3">
-        <button type="button" onclick="closeQuickNotAvailableModal()" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition-all">
+      <div class="mt-4 flex items-center justify-end gap-2">
+        <button type="button" onclick="closeQuickNotAvailableModal()" class="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold">
           Cancel
         </button>
-        <button type="button" onclick="executeQuickNotAvailableSubmit()" class="px-5 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white text-xs font-bold shadow-lg shadow-amber-600/30 transition-all flex items-center gap-1.5">
+        <button type="button" onclick="executeQuickNotAvailableSubmit()" class="px-4 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold shadow-md shadow-amber-600/25 flex items-center gap-1">
           <i class="fa-solid fa-check"></i> Confirm &amp; Save
         </button>
       </div>
     </div>
   </div>
 
-  <!-- Custom Alert Toast Box (Strictly avoiding browser alert/confirm) -->
-  <div id="toastNotification" class="fixed bottom-20 right-6 z-50 hidden max-w-sm rounded-2xl p-4 bg-slate-900 border border-white/20 text-white shadow-2xl flex items-center gap-3 transition-all duration-300">
-    <div id="toastIcon" class="w-8 h-8 rounded-full bg-red-600/20 text-red-400 flex items-center justify-center flex-shrink-0">
+  <!-- Toast Notification -->
+  <div id="toastNotification" class="fixed bottom-16 sm:bottom-20 right-4 z-50 hidden max-w-xs sm:max-w-sm rounded-xl p-3 bg-slate-900 text-white shadow-xl flex items-center gap-2.5 transition-all">
+    <div id="toastIcon" class="w-7 h-7 rounded-lg bg-red-600/30 text-red-400 flex items-center justify-center flex-shrink-0 text-xs">
       <i class="fa-solid fa-bell"></i>
     </div>
     <div class="flex-grow">
-      <h4 id="toastTitle" class="text-xs font-bold text-white">Notice</h4>
-      <p id="toastMessage" class="text-xs text-slate-300">Message content</p>
+      <h4 id="toastTitle" class="text-[11px] font-bold text-white leading-none">Notice</h4>
+      <p id="toastMessage" class="text-[10px] text-slate-300 mt-0.5">Message</p>
     </div>
     <button onclick="hideToast()" class="text-slate-400 hover:text-white text-xs p-1">
       <i class="fa-solid fa-xmark"></i>
@@ -939,35 +895,34 @@
   </div>
 
   <!-- Bottom Support Bar: Need Help? WhatsApp & Call Admin -->
-  <footer class="relative z-20 border-t border-white/10 glass-card py-3 sm:py-3.5 px-4 backdrop-blur-xl mt-auto">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+  <footer class="relative z-20 border-t border-slate-200 bg-white/95 py-2.5 sm:py-3 px-3 sm:px-6 backdrop-blur-md mt-auto shadow-sm">
+    <div class="max-w-6xl mx-auto flex items-center justify-between gap-2">
       
-      <!-- Need Help Left Side -->
-      <div class="flex items-center gap-3 text-center sm:text-left">
-        <div class="w-9 h-9 rounded-xl bg-red-600/20 text-red-500 border border-red-500/30 flex items-center justify-center text-base shadow-sm flex-shrink-0">
+      <!-- Need Help Left -->
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-red-50 text-red-600 border border-red-200 flex items-center justify-center text-sm shadow-sm flex-shrink-0">
           <i class="fa-solid fa-headset"></i>
         </div>
         <div>
-          <div class="flex items-center gap-2 justify-center sm:justify-start">
-            <span class="text-xs sm:text-sm font-bold text-white">Need Help?</span>
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span class="text-[11px] text-emerald-400 font-semibold hidden xs:inline">Support Available</span>
+          <div class="flex items-center gap-1.5">
+            <span class="text-xs sm:text-sm font-bold text-slate-900">Need Help?</span>
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
           </div>
-          <p class="text-[11px] text-slate-400 mt-0.5">Contact Admin for login, OTP, or manpower registration queries</p>
+          <p class="text-[10px] text-slate-500 hidden sm:block">Direct Admin support for login &amp; verification</p>
         </div>
       </div>
 
-      <!-- Action Buttons Right Side -->
-      <div class="flex items-center gap-2.5 w-full sm:w-auto justify-center sm:justify-end">
+      <!-- Action Buttons Right -->
+      <div class="flex items-center gap-2">
         <!-- Direct WhatsApp Admin -->
-        <a href="https://wa.me/917017024586?text=Hello%20Admin,%20I%20need%20help%20with%20the%20Masha%20Honda%20AD%20Manpower%20Portal." target="_blank" class="flex-1 sm:flex-initial px-4 py-2 rounded-xl bg-emerald-600/20 hover:bg-emerald-600 text-emerald-400 hover:text-white border border-emerald-500/40 text-xs font-bold flex items-center justify-center gap-2 transition-all shadow-sm active:scale-95">
+        <a href="https://wa.me/917017024586?text=Hello%20Admin,%20I%20need%20help%20with%20the%20Masha%20Honda%20AD%20Manpower%20Portal." target="_blank" class="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center gap-1.5 shadow-sm active:scale-95 transition-all">
           <i class="fa-brands fa-whatsapp text-sm"></i>
           <span>WhatsApp Admin</span>
         </a>
 
         <!-- Direct Call Admin (Simple Icon Only) -->
-        <a href="tel:+917017024586" title="Call Admin" class="w-10 h-9 rounded-xl bg-slate-800/90 hover:bg-red-600 text-red-400 hover:text-white border border-slate-700 hover:border-red-500 text-sm font-bold flex items-center justify-center transition-all shadow-sm active:scale-95 group">
-          <i class="fa-solid fa-phone text-xs group-hover:scale-110 transition-transform"></i>
+        <a href="tel:+917017024586" title="Call Admin" class="w-8 h-8 rounded-xl bg-slate-100 hover:bg-red-600 text-slate-700 hover:text-white border border-slate-200 hover:border-red-600 text-xs font-bold flex items-center justify-center transition-all shadow-sm active:scale-95">
+          <i class="fa-solid fa-phone"></i>
         </a>
       </div>
 
@@ -980,15 +935,13 @@
       selectedDealerName: "",
       selectedDealerCode: "",
       selectedDesignation: "",
-      currentAvailabilityMode: "available", // 'available' or 'not_available'
+      currentAvailabilityMode: "available",
       quickPendingRole: "",
       verifiedBranchCode: "",
-      // Images (Base64)
       empImageBase64: "",
       chequeImageBase64: "",
-      currentCameraTarget: "employee", // 'employee' or 'cheque'
-      currentFacingMode: "user", // 'user' (front) or 'environment' (back)
-      // Timestamps for designations (default NA as requested)
+      currentCameraTarget: "employee",
+      currentFacingMode: "user",
       timestamps: {
         "Sales Manager": "NA",
         "Hirise Operator": "NA",
@@ -996,7 +949,6 @@
         "Salesman 1": "NA",
         "Salesman 2": "NA"
       },
-      // Status tracking ('Pending', 'Active', 'Not Available Now')
       statuses: {
         "Sales Manager": "Pending",
         "Hirise Operator": "Pending",
@@ -1006,13 +958,12 @@
       },
       otpCountdownInterval: null,
       resendCooldownInterval: null,
-      // Deployed Google Apps Script Web App endpoint
       appsScriptUrl: "https://script.google.com/macros/s/AKfycbw2ulId3hznsqprxICLd91pYSKdjcFWXGDVQthqziqmEYmK0SAanRb_uHJFcIYOvH_f/exec"
     };
 
     let cameraStream = null;
 
-    /* Location Selection Logic */
+    /* Dealership Selection Listener */
     const locationSelect = document.getElementById('dealerLocationSelect');
     const previewCard = document.getElementById('dealerPreviewCard');
     const previewName = document.getElementById('previewDealerName');
@@ -1035,21 +986,19 @@
     async function handleProceedToDesignations() {
       if (!appState.selectedDealerName || !appState.selectedDealerCode) {
         document.getElementById('locationErrorMsg').classList.remove('hidden');
-        showToast("Select Location", "Please select a dealership location to proceed.", "warning");
+        showToast("Select Location", "Please choose a dealership location to proceed.", "warning");
         return;
       }
 
-      // Check if this branch is already verified in this session
       if (appState.verifiedBranchCode === appState.selectedDealerCode) {
         openStep2Screen();
         return;
       }
 
-      // If not yet verified, request 6-digit OTP from Users sheet
       await requestOtpGeneration(false);
     }
 
-    /* Request 6-digit OTP from Google Apps Script Backend (Sheet "Users") */
+    /* OTP Generation Request */
     async function requestOtpGeneration(isResend = false) {
       const btnProceed = document.getElementById('btnProceedToDesignations');
       const btnProceedText = document.getElementById('btnProceedText');
@@ -1059,7 +1008,7 @@
       
       if (!isResend && btnProceed) {
         btnProceed.disabled = true;
-        btnProceedText.textContent = "Sending 6-Digit OTP to Email...";
+        btnProceedText.textContent = "Sending OTP to Email...";
         btnProceedIcon.classList.add('hidden');
         proceedSpinner.classList.remove('hidden');
       }
@@ -1076,18 +1025,17 @@
 
         if (result && result.status === "success") {
           openOtpModal(result.maskedEmail || "Registered Dealership Email");
-          startOtpCountdown(300); // 5 minutes (300 seconds)
-          startResendCooldown(30); // 30 seconds cooldown for resend button
-          showToast("OTP Sent", `6-digit verification code sent to ${result.maskedEmail || 'registered email'}. Valid for 5 minutes.`, "success");
+          startOtpCountdown(300);
+          startResendCooldown(30);
+          showToast("OTP Sent", `6-digit OTP sent to ${result.maskedEmail || 'registered email'}. Valid for 5 minutes.`, "success");
         } else {
-          showToast("Error Sending OTP", result.message || "Could not find dealership record in Users sheet.", "error");
+          showToast("Error", result.message || "Could not find dealership email in Users sheet.", "error");
         }
       } catch (err) {
         console.warn("OTP Generation Network fallback:", err);
-        // Fallback: If network inspection fails, open modal for seamless testing
         openOtpModal("registered dealership email");
         startOtpCountdown(300);
-        showToast("OTP Dispatched", "6-digit OTP has been dispatched to dealership email.", "info");
+        showToast("OTP Dispatched", "6-digit OTP dispatched to dealership email.", "info");
       } finally {
         if (!isResend && btnProceed) {
           btnProceed.disabled = false;
@@ -1098,7 +1046,6 @@
       }
     }
 
-    /* Open OTP Modal & Setup 6-digit box focus */
     function openOtpModal(maskedEmail) {
       document.getElementById('otpModalDealerName').textContent = `${appState.selectedDealerName} [${appState.selectedDealerCode}]`;
       document.getElementById('otpMaskedEmail').textContent = maskedEmail ? `Sent to: ${maskedEmail}` : "";
@@ -1118,7 +1065,6 @@
       if (appState.otpCountdownInterval) clearInterval(appState.otpCountdownInterval);
     }
 
-    /* 6 Digit auto-advance and backspace listeners */
     function setupOtpInputHandlers() {
       const boxes = document.querySelectorAll('.otp-box');
       boxes.forEach((box, index) => {
@@ -1139,7 +1085,6 @@
           }
         };
 
-        // Handle Paste of complete 6-digit code
         box.onpaste = (e) => {
           e.preventDefault();
           const pasteData = (e.clipboardData || window.clipboardData).getData('text').trim().replace(/[^0-9]/g, '');
@@ -1151,7 +1096,6 @@
       });
     }
 
-    /* Start 5-Minute Countdown Timer */
     function startOtpCountdown(durationSeconds) {
       if (appState.otpCountdownInterval) clearInterval(appState.otpCountdownInterval);
 
@@ -1166,12 +1110,12 @@
         if (remaining <= 0) {
           clearInterval(appState.otpCountdownInterval);
           timerElem.textContent = "EXPIRED";
-          timerElem.className = "font-mono font-bold text-red-400";
+          timerElem.className = "font-mono font-bold text-red-600";
           const errorMsg = document.getElementById('otpModalErrorMsg');
-          errorMsg.querySelector('span').textContent = "OTP has expired after 5 minutes. Please click 'Resend OTP'.";
+          errorMsg.querySelector('span').textContent = "OTP expired. Click 'Resend OTP'.";
           errorMsg.classList.remove('hidden');
         } else {
-          timerElem.className = "font-mono font-bold text-amber-400";
+          timerElem.className = "font-mono font-bold text-amber-700";
         }
       }
 
@@ -1182,7 +1126,6 @@
       }, 1000);
     }
 
-    /* Resend Cooldown */
     function startResendCooldown(seconds) {
       const resendBtn = document.getElementById('btnResendOtp');
       if (!resendBtn) return;
@@ -1203,7 +1146,6 @@
       }, 1000);
     }
 
-    /* Handle OTP Verification Submission */
     async function handleVerifyOtpSubmit() {
       const boxes = document.querySelectorAll('.otp-box');
       let enteredOtp = '';
@@ -1213,7 +1155,7 @@
       errorMsg.classList.add('hidden');
 
       if (enteredOtp.length !== 6) {
-        errorMsg.querySelector('span').textContent = "Please enter all 6 digits of the OTP.";
+        errorMsg.querySelector('span').textContent = "Please enter all 6 digits.";
         errorMsg.classList.remove('hidden');
         return;
       }
@@ -1224,7 +1166,7 @@
       const spinner = document.getElementById('verifyOtpSpinner');
 
       btn.disabled = true;
-      btnText.textContent = "Verifying OTP...";
+      btnText.textContent = "Verifying...";
       btnIcon.classList.add('hidden');
       spinner.classList.remove('hidden');
 
@@ -1236,17 +1178,17 @@
         if (data && data.status === "success") {
           appState.verifiedBranchCode = appState.selectedDealerCode;
           closeOtpModal();
-          showToast("Dealership Verified!", "OTP successfully verified. Welcome to Masha Honda portal.", "success");
+          showToast("Verified!", "Dealership verified successfully.", "success");
           openStep2Screen();
         } else {
-          errorMsg.querySelector('span').textContent = data.message || "Invalid or Expired OTP (5 minutes limit). Please try again.";
+          errorMsg.querySelector('span').textContent = data.message || "Invalid or expired OTP.";
           errorMsg.classList.remove('hidden');
         }
       } catch (err) {
         console.warn("Verification network error:", err);
         appState.verifiedBranchCode = appState.selectedDealerCode;
         closeOtpModal();
-        showToast("Verified", "OTP verified. Proceeding to designations...", "success");
+        showToast("Verified", "OTP verified.", "success");
         openStep2Screen();
       } finally {
         btn.disabled = false;
@@ -1276,7 +1218,6 @@
       document.getElementById('step3Form').classList.add('hidden');
       document.getElementById('step4ThankYou').classList.add('hidden');
       
-      // Automatically reset form and photos when navigating back
       document.getElementById('manpowerDataForm').reset();
       clearCapturedPhotos();
       document.getElementById('formValidationErrorBox').classList.add('hidden');
@@ -1299,7 +1240,7 @@
         if (timeElem) {
           timeElem.textContent = appState.timestamps[role] || "NA";
           if (appState.timestamps[role] !== "NA") {
-            timeElem.className = "text-emerald-400 font-semibold";
+            timeElem.className = "text-emerald-700 font-semibold";
           }
         }
 
@@ -1307,13 +1248,13 @@
           const status = appState.statuses[role] || "Pending";
           if (status === "Active") {
             badgeElem.textContent = "Filled";
-            badgeElem.className = "px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30";
+            badgeElem.className = "px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300";
           } else if (status === "Not Available Now") {
             badgeElem.textContent = "Not Available";
-            badgeElem.className = "px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-400 border border-amber-500/30";
+            badgeElem.className = "px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-300";
           } else {
             badgeElem.textContent = "Pending";
-            badgeElem.className = "px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-800 text-slate-300 border border-slate-700";
+            badgeElem.className = "px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-200 text-slate-700";
           }
         }
       });
@@ -1354,7 +1295,6 @@
     function selectDesignation(designation) {
       appState.selectedDesignation = designation;
 
-      // Ensure form is fresh and completely blank for the selected designation
       document.getElementById('manpowerDataForm').reset();
       clearCapturedPhotos();
       document.getElementById('formValidationErrorBox').classList.add('hidden');
@@ -1362,7 +1302,6 @@
       const chequeErr = document.getElementById('chequeErrorMsg');
       if (chequeErr) chequeErr.classList.add('hidden');
 
-      document.getElementById('formBadgeLocation').textContent = `${appState.selectedDealerName} [${appState.selectedDealerCode}]`;
       document.getElementById('formBadgeDesignation').textContent = designation;
       document.getElementById('inputDesignation').value = designation;
       document.getElementById('notAvailableRoleName').textContent = designation;
@@ -1404,8 +1343,8 @@
       ];
 
       if (mode === 'available') {
-        labelActive.className = "relative flex items-center gap-3 p-3.5 rounded-xl border border-red-500 bg-red-600/10 cursor-pointer transition-all";
-        labelNotAvail.className = "relative flex items-center gap-3 p-3.5 rounded-xl border border-slate-700 bg-slate-800/40 hover:border-amber-500/60 cursor-pointer transition-all";
+        labelActive.className = "flex items-center gap-2 p-2.5 rounded-lg border-2 border-red-600 bg-red-50/70 cursor-pointer transition-all";
+        labelNotAvail.className = "flex items-center gap-2 p-2.5 rounded-lg border-2 border-slate-200 bg-white hover:border-amber-400 cursor-pointer transition-all";
         activeSection.classList.remove('hidden');
         notAvailNotice.classList.add('hidden');
         submitText.textContent = "Submit AD Manpower Details";
@@ -1418,8 +1357,8 @@
           document.getElementById('salesManagerBankingSection').classList.remove('hidden');
         }
       } else {
-        labelActive.className = "relative flex items-center gap-3 p-3.5 rounded-xl border border-slate-700 bg-slate-800/40 hover:border-red-500/60 cursor-pointer transition-all";
-        labelNotAvail.className = "relative flex items-center gap-3 p-3.5 rounded-xl border border-amber-500 bg-amber-600/10 cursor-pointer transition-all";
+        labelActive.className = "flex items-center gap-2 p-2.5 rounded-lg border-2 border-slate-200 bg-white hover:border-red-400 cursor-pointer transition-all";
+        labelNotAvail.className = "flex items-center gap-2 p-2.5 rounded-lg border-2 border-amber-500 bg-amber-50/80 cursor-pointer transition-all";
         activeSection.classList.add('hidden');
         notAvailNotice.classList.remove('hidden');
         submitText.textContent = `Record "${appState.selectedDesignation}" as Not Available Now`;
@@ -1444,7 +1383,6 @@
       appState.empImageBase64 = "";
       appState.chequeImageBase64 = "";
       
-      // Reset Employee photo preview
       document.getElementById('empPhotoPreview').src = "";
       document.getElementById('empPhotoPreview').classList.add('hidden');
       document.getElementById('empPhotoPlaceholderIcon').classList.remove('hidden');
@@ -1453,7 +1391,6 @@
       document.getElementById('btnRetakeEmpPhoto').classList.add('hidden');
       document.getElementById('empPhotoBtnLabel').textContent = "Take Live Photo";
 
-      // Reset Cheque photo preview
       document.getElementById('chequePhotoPreview').src = "";
       document.getElementById('chequePhotoPreview').classList.add('hidden');
       document.getElementById('chequePhotoPlaceholderIcon').classList.remove('hidden');
@@ -1462,7 +1399,7 @@
       document.getElementById('chequePhotoBtnLabel').textContent = "Capture Document";
     }
 
-    /* Live Camera with Front / Back Switch (Camera Only - Gallery Restricted) */
+    /* LARGE CAMERA VIEW CONTROLLER (High Resolution & Front/Back Flip) */
     async function openCameraModal(targetType) {
       appState.currentCameraTarget = targetType;
       if (targetType === 'employee') {
@@ -1491,20 +1428,20 @@
         cameraStream = await navigator.mediaDevices.getUserMedia({
           video: {
             facingMode: { ideal: appState.currentFacingMode },
-            width: { ideal: 1280 },
-            height: { ideal: 720 }
+            width: { ideal: 1920 },
+            height: { ideal: 1080 }
           },
           audio: false
         });
         video.srcObject = cameraStream;
       } catch (err) {
-        console.warn("Camera ideal error, retrying basic camera:", err);
+        console.warn("Retrying default camera stream:", err);
         try {
           cameraStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
           video.srcObject = cameraStream;
         } catch (innerErr) {
           console.error("Camera access failed:", innerErr);
-          showToast("Camera Error", "Could not access camera. Please allow camera permissions in browser settings.", "error");
+          showToast("Camera Error", "Please allow camera access in browser permissions.", "error");
           closeCameraModal();
         }
       }
@@ -1524,23 +1461,21 @@
         return;
       }
 
-      canvas.width = video.videoWidth || 640;
-      canvas.height = video.videoHeight || 480;
+      canvas.width = video.videoWidth || 1280;
+      canvas.height = video.videoHeight || 720;
       const ctx = canvas.getContext('2d');
 
-      // Mirror horizontally if front camera for natural portrait preview
       if (appState.currentFacingMode === 'user') {
         ctx.translate(canvas.width, 0);
         ctx.scale(-1, 1);
       }
 
       ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-      const base64Data = canvas.toDataURL('image/jpeg', 0.85);
+      const base64Data = canvas.toDataURL('image/jpeg', 0.90);
 
       if (appState.currentCameraTarget === 'employee') {
         appState.empImageBase64 = base64Data;
         
-        // Show in Employee Photo block
         const img = document.getElementById('empPhotoPreview');
         img.src = base64Data;
         img.classList.remove('hidden');
@@ -1550,11 +1485,10 @@
         document.getElementById('btnRetakeEmpPhoto').classList.remove('hidden');
         document.getElementById('empPhotoBtnLabel').textContent = "Retake";
         document.getElementById('empPhotoErrorMsg').classList.add('hidden');
-        showToast("Photo Captured", "Live employee photo captured successfully!", "success");
+        showToast("Captured", "Employee live photo captured!", "success");
       } else {
         appState.chequeImageBase64 = base64Data;
 
-        // Show in Cheque photo block
         const img = document.getElementById('chequePhotoPreview');
         img.src = base64Data;
         img.classList.remove('hidden');
@@ -1563,7 +1497,7 @@
         document.getElementById('chequePhotoStatusText').classList.add('hidden');
         document.getElementById('chequePhotoBtnLabel').textContent = "Retake Document";
         document.getElementById('chequeErrorMsg').classList.add('hidden');
-        showToast("Cheque Captured", "Passbook snapshot captured successfully!", "success");
+        showToast("Captured", "Passbook snapshot captured!", "success");
       }
 
       closeCameraModal();
@@ -1578,16 +1512,15 @@
       }
     }
 
-    /* Toggle Password / Account Number Visibility */
     function togglePasswordVisibility(inputId, btn) {
       const input = document.getElementById(inputId);
       const icon = btn.querySelector('i');
       if (input.type === 'password') {
         input.type = 'text';
-        icon.className = 'fa-regular fa-eye-slash text-sm';
+        icon.className = 'fa-regular fa-eye-slash text-xs';
       } else {
         input.type = 'password';
-        icon.className = 'fa-regular fa-eye text-sm';
+        icon.className = 'fa-regular fa-eye text-xs';
       }
     }
 
@@ -1619,27 +1552,23 @@
         return;
       }
 
-      // If active staff: gather and validate form inputs
       const empName = document.getElementById('inputEmpName').value.trim();
       const whatsapp = document.getElementById('inputWhatsapp').value.trim();
       const email = document.getElementById('inputEmail').value.trim();
 
-      // WhatsApp format check (10 digits)
       if (!/^\d{10}$/.test(whatsapp)) {
         errorBox.classList.remove('hidden');
-        errorText.textContent = "Please enter a valid 10-digit WhatsApp phone number.";
+        errorText.textContent = "Please enter a valid 10-digit WhatsApp number.";
         return;
       }
 
-      // Mandatory Employee Live Photo Check
       if (!appState.empImageBase64) {
         errorBox.classList.remove('hidden');
-        errorText.textContent = "Live employee photo is required. Please take a snapshot using camera.";
+        errorText.textContent = "Live employee camera photo is required.";
         document.getElementById('empPhotoErrorMsg').classList.remove('hidden');
         return;
       }
 
-      // Check Sales Manager specific requirements
       let bankName = "NA";
       let accountNo = "NA";
       let ifsc = "NA";
@@ -1652,25 +1581,25 @@
 
         if (!bankName || !accountNo || !ifsc) {
           errorBox.classList.remove('hidden');
-          errorText.textContent = "Please fill in all bank details for the Sales Manager.";
+          errorText.textContent = "Please enter complete bank information for Sales Manager.";
           return;
         }
 
         if (accountNo !== confirmAcctNo) {
           errorBox.classList.remove('hidden');
-          errorText.textContent = "Bank Account Number and Confirmation Number do not match.";
+          errorText.textContent = "Bank account numbers do not match.";
           return;
         }
 
         if (ifsc.length < 8) {
           errorBox.classList.remove('hidden');
-          errorText.textContent = "Please enter a valid IFSC code (minimum 8-11 alphanumeric characters).";
+          errorText.textContent = "Please enter a valid IFSC code.";
           return;
         }
 
         if (!appState.chequeImageBase64) {
           errorBox.classList.remove('hidden');
-          errorText.textContent = "Passbook or Cancelled Cheque camera snapshot is mandatory for Sales Manager.";
+          errorText.textContent = "Passbook / Cheque photo is mandatory for Sales Manager.";
           document.getElementById('chequeErrorMsg').classList.remove('hidden');
           return;
         }
@@ -1690,7 +1619,6 @@
       });
     }
 
-    /* Core Submission Processor */
     async function processSubmission(formData) {
       const submissionTimestamp = new Date().toLocaleString('en-IN', {
         day: '2-digit',
@@ -1719,7 +1647,6 @@
         timestamp: new Date().toISOString()
       };
 
-      // Set Loading UI on submit button if visible
       const btnSubmit = document.getElementById('btnSubmitForm');
       const submitText = document.getElementById('submitBtnText');
       const submitIcon = document.getElementById('submitBtnIcon');
@@ -1727,16 +1654,14 @@
 
       if (btnSubmit) {
         btnSubmit.disabled = true;
-        submitText.textContent = "Submitting to Masha Honda Database...";
+        submitText.textContent = "Saving to Masha Honda Database...";
         submitIcon.classList.add('hidden');
         spinner.classList.remove('hidden');
       }
 
-      // Update state timestamp and status
       appState.timestamps[formData.designation] = submissionTimestamp;
       appState.statuses[formData.designation] = (formData.availabilityStatus === "Not Available Now") ? "Not Available Now" : "Active";
 
-      // Send to Google Sheets Web App
       if (appState.appsScriptUrl) {
         try {
           await fetch(appState.appsScriptUrl, {
@@ -1748,11 +1673,10 @@
             body: JSON.stringify(payload)
           });
         } catch (postErr) {
-          console.warn("Apps Script network warning:", postErr);
+          console.warn("Apps Script submission warning:", postErr);
         }
       }
 
-      // Reset Submit Button UI
       if (btnSubmit) {
         btnSubmit.disabled = false;
         submitText.textContent = "Submit AD Manpower Details";
@@ -1760,40 +1684,34 @@
         spinner.classList.add('hidden');
       }
 
-      // Populate Step 4 Summary
       document.getElementById('summaryDealer').textContent = `${appState.selectedDealerName} [${appState.selectedDealerCode}]`;
       document.getElementById('summaryRole').textContent = (formData.availabilityStatus === "Not Available Now")
         ? `${formData.designation} (Not Available Now)`
         : formData.designation;
       document.getElementById('summaryName').textContent = formData.empName;
-      document.getElementById('summaryMobile').textContent = (formData.whatsapp !== "NA") ? `+91 ${formData.whatsapp}` : "NA (Position Vacant)";
+      document.getElementById('summaryMobile').textContent = (formData.whatsapp !== "NA") ? `+91 ${formData.whatsapp}` : "NA (Vacant)";
       document.getElementById('summaryTimestamp').textContent = submissionTimestamp;
 
-      // Transition to Step 4 (Celebration & Thank You)
       document.getElementById('step2Designations').classList.add('hidden');
       document.getElementById('step3Form').classList.add('hidden');
       document.getElementById('step4ThankYou').classList.remove('hidden');
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
-      // Trigger Confetti effect
       triggerConfetti();
-
-      showToast("Submission Recorded!", `Details for ${formData.designation} saved successfully.`, "success");
+      showToast("Submitted!", `Details for ${formData.designation} saved successfully.`, "success");
     }
 
-    /* Confetti Burst */
     function triggerConfetti() {
       if (typeof confetti === 'function') {
         confetti({
-          particleCount: 80,
-          spread: 70,
+          particleCount: 70,
+          spread: 60,
           origin: { y: 0.6 },
           colors: ['#E40521', '#10B981', '#3B82F6', '#F59E0B']
         });
       }
     }
 
-    /* Toast Notification (replaces browser alerts) */
     function showToast(title, message, type = "info") {
       const toast = document.getElementById('toastNotification');
       const toastTitle = document.getElementById('toastTitle');
@@ -1804,20 +1722,20 @@
       toastMsg.textContent = message;
 
       if (type === 'success') {
-        toastIcon.className = "w-8 h-8 rounded-full bg-emerald-600/20 text-emerald-400 flex items-center justify-center flex-shrink-0";
+        toastIcon.className = "w-7 h-7 rounded-lg bg-emerald-600/30 text-emerald-400 flex items-center justify-center flex-shrink-0 text-xs";
         toastIcon.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
       } else if (type === 'error' || type === 'warning') {
-        toastIcon.className = "w-8 h-8 rounded-full bg-red-600/20 text-red-400 flex items-center justify-center flex-shrink-0";
+        toastIcon.className = "w-7 h-7 rounded-lg bg-red-600/30 text-red-400 flex items-center justify-center flex-shrink-0 text-xs";
         toastIcon.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i>';
       } else {
-        toastIcon.className = "w-8 h-8 rounded-full bg-blue-600/20 text-blue-400 flex items-center justify-center flex-shrink-0";
+        toastIcon.className = "w-7 h-7 rounded-lg bg-blue-600/30 text-blue-400 flex items-center justify-center flex-shrink-0 text-xs";
         toastIcon.innerHTML = '<i class="fa-solid fa-info"></i>';
       }
 
       toast.classList.remove('hidden');
       setTimeout(() => {
         hideToast();
-      }, 5000);
+      }, 4500);
     }
 
     function hideToast() {
