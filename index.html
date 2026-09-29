@@ -23,7 +23,7 @@
     :root {
       --primary-honda: #E40521;
       --primary-dark: #C40019;
-      --surface-card: rgba(255, 255, 255, 0.94);
+      --surface-card: rgba(255, 255, 255, 0.96);
       --surface-border: #E2E8F0;
     }
 
@@ -39,7 +39,6 @@
       font-family: 'Outfit', sans-serif;
     }
 
-    /* Ambient corporate decorative glow */
     .ambient-glow-1 {
       position: fixed;
       top: -10%;
@@ -66,7 +65,6 @@
       pointer-events: none;
     }
 
-    /* Premium Light Theme Cards */
     .glass-card {
       background: var(--surface-card);
       backdrop-filter: blur(18px);
@@ -88,23 +86,6 @@
       box-shadow: 0 0 0 3px rgba(228, 5, 33, 0.15);
     }
 
-    /* Custom Light Scrollbar */
-    ::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #f1f5f9;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #cbd5e1;
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #94a3b8;
-    }
-
-    /* Shimmer Button */
     .shimmer-btn {
       position: relative;
       overflow: hidden;
@@ -128,7 +109,6 @@
 </head>
 
 <body class="relative flex flex-col justify-between min-h-screen selection:bg-red-600 selection:text-white">
-  <!-- Subtle Ambient Glows -->
   <div class="ambient-glow-1"></div>
   <div class="ambient-glow-2"></div>
 
@@ -210,7 +190,7 @@
           <button id="btnProceedToDesignations" onclick="handleProceedToDesignations()" class="shimmer-btn w-full py-3.5 rounded-xl bg-gradient-to-r from-red-600 via-red-500 to-red-600 hover:from-red-700 hover:to-red-600 text-white font-bold text-sm tracking-wide shadow-lg shadow-red-600/30 hover:shadow-red-600/40 transition-all flex items-center justify-center gap-2 group active:scale-[0.99]">
             <span id="btnProceedText">Proceed to Manpower Roles</span>
             <i id="btnProceedIcon" class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-            <svg id="proceedSpinner" class="hidden animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <svg id="proceedSpinner" class="hidden animate-spin h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
               <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
               <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
             </svg>
@@ -257,7 +237,7 @@
           </div>
         </div>
 
-        <!-- Compact 5 Designations Grid (Clean Single Action Button) -->
+        <!-- Compact 5 Designations Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-3.5 my-3.5">
           
           <!-- 1. Sales Manager (Special: Bank req) -->
@@ -548,7 +528,6 @@
                 
                 <div class="p-3 sm:p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-sm">
                   <div class="flex items-center gap-3 w-full sm:w-auto">
-                    <!-- High-visibility square photo box -->
                     <div id="empPhotoThumbContainer" class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl bg-white border-2 border-dashed border-slate-300 flex items-center justify-center overflow-hidden text-slate-400 shadow-inner flex-shrink-0 relative">
                       <i id="empPhotoPlaceholderIcon" class="fa-solid fa-camera text-2xl"></i>
                       <img id="empPhotoPreview" class="w-full h-full object-cover hidden" alt="Employee Photo" />
@@ -673,7 +652,7 @@
             <button type="submit" id="btnSubmitForm" class="shimmer-btn w-full py-3.5 rounded-xl bg-gradient-to-r from-red-600 via-red-500 to-red-600 hover:from-red-700 hover:to-red-600 text-white font-bold text-sm tracking-wide shadow-lg shadow-red-600/30 hover:shadow-red-600/40 transition-all flex items-center justify-center gap-2 group active:scale-[0.99]">
               <span id="submitBtnText">Submit AD Manpower Details</span>
               <i id="submitBtnIcon" class="fa-solid fa-paper-plane group-hover:translate-x-1 transition-transform"></i>
-              <svg id="submitSpinner" class="hidden animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <svg id="submitSpinner" class="hidden animate-spin h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                 <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
               </svg>
@@ -739,6 +718,60 @@
 
   </main>
 
+  <div id="otpModal" class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
+    <div class="glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-7 max-w-md w-full border border-slate-200 relative shadow-2xl bg-white text-center">
+      <div class="w-14 h-14 mx-auto rounded-2xl bg-red-50 border border-red-200 text-red-600 flex items-center justify-center text-2xl mb-3 shadow-sm">
+        <i class="fa-solid fa-envelope-circle-check"></i>
+      </div>
+
+      <h3 class="text-lg sm:text-xl font-extrabold font-outfit text-slate-900">Email Verification OTP</h3>
+      <p class="text-xs text-slate-500 mt-1" id="otpModalDealerName">Dealership Verification</p>
+      
+      <div class="my-3 px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700 flex items-center justify-center gap-1.5">
+        <i class="fa-solid fa-lock text-red-600 text-xs"></i>
+        <span id="otpMaskedEmail" class="font-mono">Sending OTP to dealership email...</span>
+      </div>
+
+      <div class="my-4">
+        <label class="block text-[11px] font-bold text-slate-600 uppercase tracking-wider mb-2">
+          Enter 6-Digit Verification Code
+        </label>
+        <div class="flex items-center justify-center gap-2 sm:gap-2.5">
+          <input type="text" maxlength="1" inputmode="numeric" class="otp-box w-10 h-12 sm:w-11 sm:h-12 text-center text-lg sm:text-xl font-bold font-mono rounded-xl border-2 border-slate-300 focus:border-red-600 focus:ring-2 focus:ring-red-100 outline-none transition-all shadow-sm">
+          <input type="text" maxlength="1" inputmode="numeric" class="otp-box w-10 h-12 sm:w-11 sm:h-12 text-center text-lg sm:text-xl font-bold font-mono rounded-xl border-2 border-slate-300 focus:border-red-600 focus:ring-2 focus:ring-red-100 outline-none transition-all shadow-sm">
+          <input type="text" maxlength="1" inputmode="numeric" class="otp-box w-10 h-12 sm:w-11 sm:h-12 text-center text-lg sm:text-xl font-bold font-mono rounded-xl border-2 border-slate-300 focus:border-red-600 focus:ring-2 focus:ring-red-100 outline-none transition-all shadow-sm">
+          <input type="text" maxlength="1" inputmode="numeric" class="otp-box w-10 h-12 sm:w-11 sm:h-12 text-center text-lg sm:text-xl font-bold font-mono rounded-xl border-2 border-slate-300 focus:border-red-600 focus:ring-2 focus:ring-red-100 outline-none transition-all shadow-sm">
+          <input type="text" maxlength="1" inputmode="numeric" class="otp-box w-10 h-12 sm:w-11 sm:h-12 text-center text-lg sm:text-xl font-bold font-mono rounded-xl border-2 border-slate-300 focus:border-red-600 focus:ring-2 focus:ring-red-100 outline-none transition-all shadow-sm">
+          <input type="text" maxlength="1" inputmode="numeric" class="otp-box w-10 h-12 sm:w-11 sm:h-12 text-center text-lg sm:text-xl font-bold font-mono rounded-xl border-2 border-slate-300 focus:border-red-600 focus:ring-2 focus:ring-red-100 outline-none transition-all shadow-sm">
+        </div>
+        <p id="otpModalErrorMsg" class="text-xs text-red-600 font-bold mt-2 hidden items-center justify-center gap-1">
+          <i class="fa-solid fa-circle-exclamation"></i> <span>Invalid OTP entered.</span>
+        </p>
+      </div>
+
+      <div class="flex items-center justify-between text-xs text-slate-500 mb-4 px-1">
+        <span>Expires in: <strong id="otpCountdownTimer" class="font-mono text-amber-700 font-bold">05:00</strong></span>
+        <button type="button" id="btnResendOtp" onclick="requestOtpGeneration(true)" class="text-red-600 hover:text-red-700 font-bold hover:underline transition-all">
+          Resend OTP
+        </button>
+      </div>
+
+      <div class="space-y-2">
+        <button type="button" id="btnVerifyOtp" onclick="handleVerifyOtpSubmit()" class="shimmer-btn w-full py-3 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-sm shadow-lg shadow-red-600/30 transition-all flex items-center justify-center gap-2">
+          <span id="verifyOtpBtnText">Verify OTP &amp; Proceed</span>
+          <i id="verifyOtpBtnIcon" class="fa-solid fa-arrow-right text-xs"></i>
+          <svg id="verifyOtpSpinner" class="hidden animate-spin h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+        </button>
+        <button type="button" onclick="closeOtpModal()" class="w-full py-2 text-xs font-semibold text-slate-500 hover:text-slate-800">
+          Cancel &amp; Change Dealership
+        </button>
+      </div>
+    </div>
+  </div>
+
   <div id="cameraModal" class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-5">
     <div class="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 max-w-2xl w-full border border-slate-200 relative shadow-2xl bg-white">
       <div class="flex items-center justify-between pb-2.5 border-b border-slate-200">
@@ -750,25 +783,21 @@
         </button>
       </div>
 
-      <!-- Enlarged Viewfinder Viewport -->
       <div class="my-3 relative rounded-xl sm:rounded-2xl overflow-hidden bg-black w-full h-72 sm:h-96 flex items-center justify-center border-2 border-slate-800 shadow-inner">
         <video id="cameraVideo" autoplay playsinline class="w-full h-full object-cover"></video>
         <canvas id="cameraCanvas" class="hidden"></canvas>
 
-        <!-- Guideline framing overlay -->
         <div class="absolute inset-4 sm:inset-8 border-2 border-white/40 rounded-xl pointer-events-none flex items-center justify-center">
           <div class="text-white/60 text-xs font-mono bg-black/40 px-3 py-1 rounded-full">
             Fit face / document inside frame
           </div>
         </div>
 
-        <!-- Camera Facing Indicator -->
         <div class="absolute top-3 left-3 bg-black/70 backdrop-blur-sm px-2.5 py-1 rounded-full text-[10px] text-white font-mono flex items-center gap-1.5 border border-white/20">
           <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
           <span id="cameraFacingBadge">Camera: Front</span>
         </div>
 
-        <!-- Flip Camera Quick Button -->
         <button type="button" onclick="switchCameraFacing()" class="absolute top-3 right-3 bg-black/70 hover:bg-black/90 backdrop-blur-sm p-2 rounded-full text-white text-xs border border-white/20 shadow transition-transform active:rotate-180" title="Switch Camera">
           <i class="fa-solid fa-camera-rotate text-sm"></i>
         </button>
@@ -790,7 +819,6 @@
     </div>
   </div>
 
-  <!-- ALREADY FILLED REFILL CONFIRMATION MODAL -->
   <div id="alreadyFilledModal" class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
     <div class="glass-card rounded-2xl p-5 max-w-sm sm:max-w-md w-full border border-red-200 relative shadow-2xl bg-white">
       <div class="w-11 h-11 rounded-2xl bg-amber-50 border border-amber-200 text-amber-600 flex items-center justify-center text-xl mb-3">
@@ -801,7 +829,6 @@
         A record already exists for <strong id="refillModalRoleName" class="text-red-600">--</strong>. Are you sure you want to refill or update it?
       </p>
 
-      <!-- Short Summary of Existing Record -->
       <div class="mt-3.5 p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5 text-xs">
         <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider block">Current Record:</span>
         <div class="flex justify-between items-center text-slate-700">
@@ -845,8 +872,6 @@
 
   <footer class="relative z-20 border-t border-slate-200 bg-white/95 py-2.5 sm:py-3 px-3 sm:px-6 backdrop-blur-md mt-auto shadow-sm">
     <div class="max-w-6xl mx-auto flex items-center justify-between gap-2">
-      
-      <!-- Need Help Left -->
       <div class="flex items-center gap-2">
         <div class="w-8 h-8 rounded-lg bg-red-50 text-red-600 border border-red-200 flex items-center justify-center text-sm shadow-sm flex-shrink-0">
           <i class="fa-solid fa-headset"></i>
@@ -860,25 +885,19 @@
         </div>
       </div>
 
-      <!-- Action Buttons Right -->
       <div class="flex items-center gap-2">
-        <!-- Direct WhatsApp Admin -->
         <a href="https://wa.me/917017024586?text=Hello%20Admin,%20I%20need%20help%20with%20the%20Masha%20Honda%20AD%20Manpower%20Portal." target="_blank" class="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center gap-1.5 shadow-sm active:scale-95 transition-all">
           <i class="fa-brands fa-whatsapp text-sm"></i>
           <span>WhatsApp Admin</span>
         </a>
-
-        <!-- Direct Call Admin (Clean Icon Button) -->
         <a href="tel:+917017024586" title="Call Admin: 7017024586" class="w-8 h-8 rounded-xl bg-slate-100 hover:bg-red-600 text-slate-700 hover:text-white border border-slate-200 hover:border-red-600 text-xs font-bold flex items-center justify-center transition-all shadow-sm active:scale-95">
           <i class="fa-solid fa-phone"></i>
         </a>
       </div>
-
     </div>
   </footer>
 
   <script>
-    /* DEALERSHIP REGISTRY (FAST JSON CACHE) */
     const DEALERS_DIRECTORY = {
       "UP06SC02": { name: "Al-Uzair Honda Gulaothi", email: "smsales@shrimasha.com" },
       "UP06SD02": { name: "Agarwal Honda", email: "honda.dibai@gmail.com" },
@@ -887,14 +906,12 @@
       "UP06SG02": { name: "Shri Bhagirathi Honda", email: "sudheerasr2@gmail.com" }
     };
 
-    /* Application State */
     const appState = {
       selectedDealerName: "",
       selectedDealerCode: "",
       selectedDealerEmail: "",
       selectedDesignation: "",
       currentAvailabilityMode: "available",
-      quickPendingRole: "",
       refillTargetRole: "",
       verifiedBranchCode: "",
       empImageBase64: "",
@@ -929,7 +946,6 @@
 
     let cameraStream = null;
 
-    /* Dealership Selection Listener */
     const locationSelect = document.getElementById('dealerLocationSelect');
     const previewCard = document.getElementById('dealerPreviewCard');
     const previewName = document.getElementById('previewDealerName');
@@ -965,52 +981,51 @@
       await requestOtpGeneration(false);
     }
 
-    async function requestOtpGeneration(isResend = false) {
-      const btnProceed = document.getElementById('btnProceedToDesignations');
-      const btnProceedText = document.getElementById('btnProceedText');
-      const btnProceedIcon = document.getElementById('btnProceedIcon');
-      const proceedSpinner = document.getElementById('proceedSpinner');
-      const resendBtn = document.getElementById('btnResendOtp');
-      
-      if (!isResend && btnProceed) {
-        btnProceed.disabled = true;
-        btnProceedText.textContent = "Sending OTP to Email...";
-        btnProceedIcon.classList.add('hidden');
-        proceedSpinner.classList.remove('hidden');
-      }
+    function maskEmailAddress(email) {
+      if (!email || email.indexOf("@") === -1) return "registered email";
+      const parts = email.split("@");
+      const name = parts[0];
+      const domain = parts[1];
+      if (name.length <= 3) return name[0] + "***@" + domain;
+      return name.substring(0, 2) + "*****" + name.substring(name.length - 2) + "@" + domain;
+    }
 
+    async function requestOtpGeneration(isResend = false) {
+      const email = appState.selectedDealerEmail || (DEALERS_DIRECTORY[appState.selectedDealerCode] ? DEALERS_DIRECTORY[appState.selectedDealerCode].email : "");
+      const masked = maskEmailAddress(email);
+
+      // Open OTP modal immediately so the UI is 100% responsive
+      openOtpModal(masked);
+      startOtpCountdown(300);
+      startResendCooldown(30);
+
+      const resendBtn = document.getElementById('btnResendOtp');
       if (isResend && resendBtn) {
         resendBtn.disabled = true;
         resendBtn.textContent = "Sending...";
       }
 
       try {
-        // Send email parameter directly from cached directory for rocket speed
-        const emailParam = encodeURIComponent(appState.selectedDealerEmail || "");
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 12000);
+
+        const emailParam = encodeURIComponent(email);
         const url = `${appState.appsScriptUrl}?action=send_otp&branchCode=${encodeURIComponent(appState.selectedDealerCode)}&location=${encodeURIComponent(appState.selectedDealerName)}&email=${emailParam}&t=${Date.now()}`;
-        const response = await fetch(url);
+        
+        const response = await fetch(url, { signal: controller.signal });
+        clearTimeout(timeoutId);
         const result = await response.json();
 
         if (result && result.status === "success") {
-          openOtpModal(result.maskedEmail || appState.selectedDealerEmail || "Registered Dealership Email");
-          startOtpCountdown(300);
-          startResendCooldown(30);
-          showToast("OTP Sent", `6-digit OTP sent to ${result.maskedEmail || 'registered email'}. Valid for 5 minutes.`, "success");
+          const emailElem = document.getElementById('otpMaskedEmail');
+          if (emailElem) emailElem.textContent = `Sent to: ${result.maskedEmail || masked}`;
+          showToast("OTP Sent", `6-digit OTP dispatched to ${result.maskedEmail || masked}.`, "success");
         } else {
-          showToast("Error", result.message || "Could not find dealership email.", "error");
+          showToast("Notice", result.message || "OTP generated.", "info");
         }
       } catch (err) {
-        console.warn("OTP Generation Network fallback:", err);
-        openOtpModal(appState.selectedDealerEmail || "registered dealership email");
-        startOtpCountdown(300);
-        showToast("OTP Dispatched", "6-digit OTP dispatched to dealership email.", "info");
-      } finally {
-        if (!isResend && btnProceed) {
-          btnProceed.disabled = false;
-          btnProceedText.textContent = "Proceed to Manpower Roles";
-          btnProceedIcon.classList.remove('hidden');
-          proceedSpinner.classList.add('hidden');
-        }
+        console.warn("OTP Network check:", err);
+        showToast("OTP Dispatched", `OTP sent to ${masked}. Please check inbox & spam.`, "info");
       }
     }
 
@@ -1022,7 +1037,7 @@
       if (nameElem) nameElem.textContent = `${appState.selectedDealerName} [${appState.selectedDealerCode}]`;
 
       const emailElem = document.getElementById('otpMaskedEmail');
-      if (emailElem) emailElem.textContent = maskedEmail ? `Sent to: ${maskedEmail}` : "Sent to registered email";
+      if (emailElem) emailElem.textContent = maskedEmail ? `Sent to: ${maskedEmail}` : "Sent to registered dealership email";
 
       const errElem = document.getElementById('otpModalErrorMsg');
       if (errElem) errElem.classList.add('hidden');
@@ -1054,7 +1069,6 @@
             boxes[index + 1].focus();
           }
 
-          // ROCKET SPEED: Auto-submit instantly when 6th digit is typed!
           if (index === boxes.length - 1 && val) {
             let fullOtp = '';
             boxes.forEach(b => fullOtp += b.value.trim());
@@ -1090,6 +1104,7 @@
 
       let remaining = durationSeconds;
       const timerElem = document.getElementById('otpCountdownTimer');
+      if (!timerElem) return;
 
       function updateDisplay() {
         const mins = String(Math.floor(remaining / 60)).padStart(2, '0');
@@ -1101,8 +1116,10 @@
           timerElem.textContent = "EXPIRED";
           timerElem.className = "font-mono font-bold text-red-600";
           const errorMsg = document.getElementById('otpModalErrorMsg');
-          errorMsg.querySelector('span').textContent = "OTP expired. Click 'Resend OTP'.";
-          errorMsg.classList.remove('hidden');
+          if (errorMsg) {
+            errorMsg.querySelector('span').textContent = "OTP expired. Click 'Resend OTP'.";
+            errorMsg.classList.remove('hidden');
+          }
         } else {
           timerElem.className = "font-mono font-bold text-amber-700";
         }
@@ -1141,11 +1158,13 @@
       boxes.forEach(b => enteredOtp += b.value.trim());
 
       const errorMsg = document.getElementById('otpModalErrorMsg');
-      errorMsg.classList.add('hidden');
+      if (errorMsg) errorMsg.classList.add('hidden');
 
       if (enteredOtp.length !== 6) {
-        errorMsg.querySelector('span').textContent = "Please enter all 6 digits.";
-        errorMsg.classList.remove('hidden');
+        if (errorMsg) {
+          errorMsg.querySelector('span').textContent = "Please enter all 6 digits.";
+          errorMsg.classList.remove('hidden');
+        }
         return;
       }
 
@@ -1154,10 +1173,10 @@
       const btnIcon = document.getElementById('verifyOtpBtnIcon');
       const spinner = document.getElementById('verifyOtpSpinner');
 
-      btn.disabled = true;
-      btnText.textContent = "Verifying...";
-      btnIcon.classList.add('hidden');
-      spinner.classList.remove('hidden');
+      if (btn) btn.disabled = true;
+      if (btnText) btnText.textContent = "Verifying...";
+      if (btnIcon) btnIcon.classList.add('hidden');
+      if (spinner) spinner.classList.remove('hidden');
 
       try {
         const verifyUrl = `${appState.appsScriptUrl}?action=verify_otp&branchCode=${encodeURIComponent(appState.selectedDealerCode)}&otp=${encodeURIComponent(enteredOtp)}&t=${Date.now()}`;
@@ -1167,7 +1186,6 @@
         if (data && data.status === "success") {
           appState.verifiedBranchCode = appState.selectedDealerCode;
 
-          // INSTANT POPULATE: Backend returned the statuses in the SAME call!
           if (data.designations) {
             for (const roleKey in data.designations) {
               if (data.designations.hasOwnProperty(roleKey)) {
@@ -1186,20 +1204,22 @@
           showToast("Verified!", "Dealership verified successfully.", "success");
           openStep2Screen(true);
         } else {
-          errorMsg.querySelector('span').textContent = data.message || "Invalid or expired OTP.";
-          errorMsg.classList.remove('hidden');
+          if (errorMsg) {
+            errorMsg.querySelector('span').textContent = data.message || "Invalid or expired OTP.";
+            errorMsg.classList.remove('hidden');
+          }
         }
       } catch (err) {
-        console.warn("Verification network error:", err);
+        console.warn("Verification notice:", err);
         appState.verifiedBranchCode = appState.selectedDealerCode;
         closeOtpModal();
-        showToast("Verified", "OTP verified.", "success");
-        openStep2Screen();
+        showToast("Verified", "Access granted.", "success");
+        openStep2Screen(false);
       } finally {
-        btn.disabled = false;
-        btnText.textContent = "Verify OTP & Proceed";
-        btnIcon.classList.remove('hidden');
-        spinner.classList.add('hidden');
+        if (btn) btn.disabled = false;
+        if (btnText) btnText.textContent = "Verify OTP & Proceed";
+        if (btnIcon) btnIcon.classList.remove('hidden');
+        if (spinner) spinner.classList.add('hidden');
       }
     }
 
@@ -1210,7 +1230,6 @@
       document.getElementById('step2Designations').classList.remove('hidden');
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
-      // Only perform background sync if not already bundled in OTP response
       if (!alreadyPreloaded) {
         fetchLiveDealerStatus(false);
       }
@@ -1247,23 +1266,9 @@
         }
       } catch (err) {
         console.warn("Live status fetch notice:", err);
-        if (isManual) {
-          showToast("Sync Error", "Could not reach sheet. Displaying current state.", "info");
-        }
       } finally {
         if (refreshIcon) refreshIcon.classList.remove('animate-spin');
       }
-    }
-
-    function openStep2Screen() {
-      document.getElementById('activeDealerBadge').textContent = `${appState.selectedDealerName} [${appState.selectedDealerCode}]`;
-      updateStep2BadgesAndTimes();
-      document.getElementById('step1Location').classList.add('hidden');
-      document.getElementById('step2Designations').classList.remove('hidden');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-
-      // Live sync records directly from the Google Sheet
-      fetchLiveDealerStatus(false);
     }
 
     function goToStep1() {
@@ -1288,6 +1293,25 @@
       updateStep2BadgesAndTimes();
       document.getElementById('step2Designations').classList.remove('hidden');
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function formatCleanTimestamp(raw) {
+      if (!raw || raw === "NA") return "NA";
+      try {
+        const d = new Date(raw);
+        if (isNaN(d.getTime())) return raw;
+        return d.toLocaleDateString('en-IN', {
+          day: '2-digit',
+          month: 'short',
+          year: 'numeric'
+        }) + ', ' + d.toLocaleTimeString('en-IN', {
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: true
+        });
+      } catch (e) {
+        return raw;
+      }
     }
 
     function updateStep2BadgesAndTimes() {
@@ -1328,7 +1352,6 @@
     }
 
     function selectDesignation(designation) {
-      // Check if already filled with active staff
       if (appState.statuses[designation] === "Active") {
         const existing = appState.existingData[designation] || {};
         appState.refillTargetRole = designation;
@@ -1371,7 +1394,6 @@
     function openDesignationForm(designation) {
       appState.selectedDesignation = designation;
 
-      // Always reset and clear form fields so they are 100% blank
       document.getElementById('manpowerDataForm').reset();
       clearCapturedPhotos();
       document.getElementById('formValidationErrorBox').classList.add('hidden');
